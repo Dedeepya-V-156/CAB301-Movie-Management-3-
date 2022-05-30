@@ -1,0 +1,13 @@
+/Users/hogan/Desktop/LibManager/LibManager/bin/Debug/netcoreapp3.1/LibManager.deps.json
+/Users/hogan/Desktop/LibManager/LibManager/bin/Debug/netcoreapp3.1/LibManager.runtimeconfig.json
+/Users/hogan/Desktop/LibManager/LibManager/bin/Debug/netcoreapp3.1/LibManager.runtimeconfig.dev.json
+/Users/hogan/Desktop/LibManager/LibManager/bin/Debug/netcoreapp3.1/LibManager.dll
+/Users/hogan/Desktop/LibManager/LibManager/bin/Debug/netcoreapp3.1/LibManager.pdb
+/Users/hogan/Desktop/LibManager/LibManager/obj/Debug/netcoreapp3.1/LibManager.csproj.AssemblyReference.cache
+/Users/hogan/Desktop/LibManager/LibManager/obj/Debug/netcoreapp3.1/LibManager.GeneratedMSBuildEditorConfig.editorconfig
+/Users/hogan/Desktop/LibManager/LibManager/obj/Debug/netcoreapp3.1/LibManager.AssemblyInfoInputs.cache
+/Users/hogan/Desktop/LibManager/LibManager/obj/Debug/netcoreapp3.1/LibManager.AssemblyInfo.cs
+/Users/hogan/Desktop/LibManager/LibManager/obj/Debug/netcoreapp3.1/LibManager.csproj.CoreCompileInputs.cache
+/Users/hogan/Desktop/LibManager/LibManager/obj/Debug/netcoreapp3.1/LibManager.dll
+/Users/hogan/Desktop/LibManager/LibManager/obj/Debug/netcoreapp3.1/LibManager.pdb
+/Users/hogan/Desktop/LibManager/LibManager/obj/Debug/netcoreapp3.1/LibManager.genruntimeconfig.cache
