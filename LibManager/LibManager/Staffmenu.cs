@@ -98,12 +98,39 @@ namespace LibManager
                         {
                             Console.WriteLine("Movie doesnt exist.");
                         }
-                        
-                        
                         break;
 
                     case "3": //Register a new member with the system
-                        Console.WriteLine("Name:");
+                        Console.Write("First name: ");
+                        string firstName = Console.ReadLine();
+                        Console.Write("Last name: ");
+                        string lastName = Console.ReadLine();
+                        Console.Write("Phone number: ");
+                        string contactNumber = (Console.ReadLine());
+                        if (IMember.IsValidContactNumber(contactNumber))
+                        {
+                            Console.Write("Pin: ");
+                            string pin = Console.ReadLine();
+                            if (IMember.IsValidPin(pin))
+                            {
+                                Member thisMember = new Member(firstName, lastName, contactNumber, pin);
+                                thisMembersCollection.Add(thisMember);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid pin.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid contact number.");
+                        }
+
+
+
+
+
+                        
                         break;
 
                     case "4": //Remove a registered memeber from the system
