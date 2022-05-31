@@ -140,7 +140,7 @@ namespace LibManager
                             {
                                 thisMembersCollection.Delete(thisMemberDelete);
                             }
-
+                            // Jacob is cool!
                         }
                         break;
 
@@ -153,7 +153,8 @@ namespace LibManager
                         Member thisMemberDisplay = new Member(firstNameDisplay, lastNameDisplay);
                         if (thisMembersCollection.Search(thisMemberDisplay))
                         {
-                         thisMembersCollection.   
+                            IMember MemberDisplay = thisMembersCollection.Search(firstNameDisplay, lastNameDisplay);
+                            Console.WriteLine("The member's contact number is: " + MemberDisplay.ContactNumber);
                         }
                         
                         break;
@@ -164,6 +165,7 @@ namespace LibManager
 
                     case "0":
                         status = false;
+                        Mainmenu.PrintMainMenu();
                         break;
                 }
                 
