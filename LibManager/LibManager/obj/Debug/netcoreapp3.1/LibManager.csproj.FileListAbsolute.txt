@@ -39,3 +39,17 @@ D:\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.csproj.CoreCompileIn
 D:\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.dll
 D:\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.pdb
 D:\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.genruntimeconfig.cache
+C:\Users\n10913858\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.exe
+C:\Users\n10913858\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.deps.json
+C:\Users\n10913858\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.runtimeconfig.json
+C:\Users\n10913858\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.runtimeconfig.dev.json
+C:\Users\n10913858\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.dll
+C:\Users\n10913858\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.pdb
+C:\Users\n10913858\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.csproj.AssemblyReference.cache
+C:\Users\n10913858\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\n10913858\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.AssemblyInfoInputs.cache
+C:\Users\n10913858\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.AssemblyInfo.cs
+C:\Users\n10913858\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.csproj.CoreCompileInputs.cache
+C:\Users\n10913858\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.dll
+C:\Users\n10913858\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.pdb
+C:\Users\n10913858\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.genruntimeconfig.cache

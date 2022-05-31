@@ -51,7 +51,7 @@ namespace LibManager
 
             Console.Write("Duration: ");
             int thisduration = Convert.ToInt32(Console.ReadLine());
-            //Max Cullen is cool
+            
 
             return new Movie(title, thisGenre, thisClass, thisduration, 1);
         }
@@ -65,10 +65,9 @@ namespace LibManager
                 PrintStaffMenu();
                 switch (Console.ReadLine())
                 {
-                    case "1":
+                    case "1": //Add new DVD's of a new movie to the system
                         Movie thisMovie = GetMovieinfo();
-                        Console.WriteLine(thisMovie.Duration);
-                        Console.WriteLine(thisMovie.ToString());
+
 
                         if (!thisMovieCollection.Search(thisMovie))
                         {
@@ -79,18 +78,43 @@ namespace LibManager
                             thisMovieCollection.Search(thisMovie.Title).TotalCopies++;
                             Console.WriteLine(thisMovieCollection.Search(thisMovie.Title).TotalCopies);
                         }
+                        break;
+
+                    case "2": //Remove DVD's of a movie from the system
+                        Console.Write("Title: ");
+                        string thisMovieTitle = Console.ReadLine();
+                        if (thisMovieCollection.Search(thisMovieTitle).TotalCopies > 1)
+                        {
+                            thisMovieCollection.Search(thisMovieTitle).TotalCopies--;
+                        }
+                        else if (thisMovieCollection.Search(thisMovieTitle).TotalCopies == 1)
+                        {
+                            thisMovieCollection.Delete(thisMovieCollection.Search(thisMovieTitle));
+                        }
+                        else
+                        {
+                            Console.Write("Movie doesnt exist.");
+                        }
+                        
+                        
+                        break;
+
+                    case "3": //Register a new member with the system
 
                         break;
-                    case "2":
+
+                    case "4": //Remove a registered memeber from the system
+
                         break;
-                    case "3":
+
+                    case "5": //Display a member's contact number given the member's first name
+
                         break;
-                    case "4":
+
+                    case "6": //Display all memebers who are currently renting a particular movie
+
                         break;
-                    case "5":
-                        break;
-                    case "6":
-                        break;
+
                     case "0":
                         status = false;
                         break;
