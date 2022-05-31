@@ -50,9 +50,9 @@ namespace LibManager
             var thisClass = typesClass[optionClass];
 
             Console.Write("Duration: ");
-            int duration = Console.Read();
+            int thisduration = Convert.ToInt32(Console.ReadLine());
 
-            return new Movie(title, thisGenre, thisClass, duration, 1);
+            return new Movie(title, thisGenre, thisClass, thisduration, 1);
         }
 
         public static void Init(MemberCollection thisMembersCollection, MovieCollection thisMovieCollection)
@@ -66,6 +66,7 @@ namespace LibManager
                 {
                     case "1":
                         Movie thisMovie = GetMovieinfo();
+                        Console.WriteLine(thisMovie.Duration);
                         Console.WriteLine(thisMovie.ToString());
 
                         if (!thisMovieCollection.Search(thisMovie))
@@ -78,9 +79,6 @@ namespace LibManager
                             Console.WriteLine(thisMovieCollection.Search(thisMovie.Title).TotalCopies);
                         }
 
-                        
-
-                        //Console.WriteLine(thisMovieCollection.IsEmpty());
                         break;
                     case "2":
                         break;
