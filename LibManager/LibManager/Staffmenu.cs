@@ -125,20 +125,37 @@ namespace LibManager
                         {
                             Console.WriteLine("Invalid contact number.");
                         }
-
-
-
-
-
-                        
                         break;
 
                     case "4": //Remove a registered memeber from the system
+                        Console.Write("First name: ");
+                        string firstNameDelete = Console.ReadLine();
+                        Console.Write("Last name: ");
+                        string lastNameDelete = Console.ReadLine();
 
+                        Member thisMemberDelete = new Member(firstNameDelete, lastNameDelete);
+                        if (thisMembersCollection.Search(thisMemberDelete))
+                        {
+                            if (true) //TODO: Check if number of borrowed movies == 0.
+                            {
+                                thisMembersCollection.Delete(thisMemberDelete);
+                            }
+
+                        }
                         break;
 
                     case "5": //Display a member's contact number given the member's first name
+                        Console.Write("First name: ");
+                        string firstNameDisplay = Console.ReadLine();
+                        Console.Write("Last name: ");
+                        string lastNameDisplay = Console.ReadLine();
 
+                        Member thisMemberDisplay = new Member(firstNameDisplay, lastNameDisplay);
+                        if (thisMembersCollection.Search(thisMemberDisplay))
+                        {
+                         thisMembersCollection.   
+                        }
+                        
                         break;
 
                     case "6": //Display all memebers who are currently renting a particular movie

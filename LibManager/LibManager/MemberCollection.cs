@@ -237,10 +237,63 @@ using System.Linq;
             return false;
         }
 
-        // Remove all the members in this member collection
-        // Pre-condition: nil
-        // Post-condition: no member in this member collection 
-        public void Clear()
+    public IMember Search(string FirstName, string LastName)
+    {
+        // To be implemented by students in Phase 1
+        if (!IsEmpty())
+        {
+            int j = 0;
+            int k = 0;
+            double l = 0;
+            double r = count - 1;
+            while (l <= r)
+            {
+                int m = Convert.ToInt16(Math.Floor((l + r) / 2));
+                if (LastName == members[m].LastName)
+                {
+                    if (FirstName == members[m].FirstName)
+                    {
+                        Console.Write($"Found member: {members[m].ToString()}.\n");
+                        return members[m];
+                    }
+                    else if (FirstName[j] == members[m].FirstName[j])
+                    {
+                        j++;
+                    }
+                    else if (FirstName[j] < members[m].FirstName[j])
+                    {
+                        r = m - 1;
+                    }
+                    else
+                    {
+                        l = m + 1;
+                    }
+
+                }
+                else if (LastName[k] == members[m].LastName[k])
+                {
+                    k++;
+                }
+                else if (LastName[k] < members[m].LastName[k])
+                {
+                    r = m - 1;
+                }
+                else
+                {
+                    l = m + 1;
+                }
+            }
+            Console.Write($"Unable to find member:" + FirstName + " " + LastName + ".\n");
+            return null;
+        }
+
+        return null;
+    }
+
+    // Remove all the members in this member collection
+    // Pre-condition: nil
+    // Post-condition: no member in this member collection 
+    public void Clear()
         {
             for (int i = 0; i < count; i++)
             {
