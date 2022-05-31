@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\LibManager\\LibManager\\LibManager.csproj",
+      "projectUniqueName": "C:\\Users\\n10913858\\Source\\Repos\\CAB301-Movie-Management-3-\\LibManager\\LibManager\\LibManager.csproj",
       "projectName": "LibManager",
-      "projectPath": "D:\\LibManager\\LibManager\\LibManager.csproj",
+      "projectPath": "C:\\Users\\n10913858\\Source\\Repos\\CAB301-Movie-Management-3-\\LibManager\\LibManager\\LibManager.csproj",
       "packagesPath": "C:\\Users\\n10913858\\.nuget\\packages\\",
-      "outputPath": "D:\\LibManager\\LibManager\\obj\\",
+      "outputPath": "C:\\Users\\n10913858\\Source\\Repos\\CAB301-Movie-Management-3-\\LibManager\\LibManager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\n10913858\\AppData\\Roaming\\NuGet\\NuGet.Config",

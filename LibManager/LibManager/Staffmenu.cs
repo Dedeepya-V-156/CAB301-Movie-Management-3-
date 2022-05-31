@@ -51,6 +51,7 @@ namespace LibManager
 
             Console.Write("Duration: ");
             int thisduration = Convert.ToInt32(Console.ReadLine());
+            //Max Cullen is cool
 
             return new Movie(title, thisGenre, thisClass, thisduration, 1);
         }
