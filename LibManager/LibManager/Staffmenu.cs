@@ -23,6 +23,38 @@ namespace LibManager
             Console.WriteLine("Enter your choice ==> (1/2/3/4/5/6/0) ");
         }
 
+        public static Movie GetMovieinfo()
+        {
+            Console.Write("Title: ");
+            string title = Console.ReadLine();
+
+            int optionGenre = UserInterface.GetOption("Please select one of the following:",
+            "Action", "Comedy", "History", "Drama", "Western");
+            List<MovieGenre> typesGenre = new List<MovieGenre>() {
+                            MovieGenre.Action,
+                            MovieGenre.Comedy,
+                            MovieGenre.Drama,
+                            MovieGenre.History,
+                            MovieGenre.Western
+                        };
+            var thisGenre = typesGenre[optionGenre];
+
+            int optionClass = UserInterface.GetOption("Please select one of the following:",
+            "G", "PG", "M", "M15Plus");
+            List<MovieClassification> typesClass = new List<MovieClassification>() {
+                            MovieClassification.G,
+                            MovieClassification.M,
+                            MovieClassification.PG,
+                            MovieClassification.M15Plus
+                        };
+            var thisClass = typesClass[optionClass];
+
+            Console.Write("Duration: ");
+            int duration = Console.Read();
+
+            return new Movie(title, thisGenre, thisClass, duration, 1);
+        }
+
         public static void Init(MemberCollection thisMembersCollection, MovieCollection thisMovieCollection)
         {
             bool status = true;
@@ -33,41 +65,22 @@ namespace LibManager
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        Console.Write("Title: ");
-                        string title = Console.ReadLine();
+                        Movie thisMovie = GetMovieinfo();
+                        Console.WriteLine(thisMovie.ToString());
 
-                        int optionGenre = UserInterface.GetOption("Please select one of the following:",
-                        "Action", "Comedy", "History", "Drama", "Western");
-                        List<MovieGenre> typesGenre = new List<MovieGenre>() {
-                            MovieGenre.Action,
-                            MovieGenre.Comedy,
-                            MovieGenre.Drama,
-                            MovieGenre.History,
-                            MovieGenre.Western
-                        };
-                        var thisGenre = typesGenre[optionGenre];
-
-                        int optionClass = UserInterface.GetOption("Please select one of the following:",
-                        "G", "PG", "M", "M15Plus");
-                        List<MovieClassification> typesClass = new List<MovieClassification>() {
-                            MovieClassification.G,
-                            MovieClassification.M,
-                            MovieClassification.PG,
-                            MovieClassification.M15Plus
-                        };
-                        var thisClass = typesClass[optionClass];
-
-                        Console.Write("Duration: ");
-                        int duration = Console.Read();
-
-                        if (!thisMovieCollection.Search(new Movie(title)))
+                        if (!thisMovieCollection.Search(thisMovie))
                         {
-                            thisMovieCollection.Insert(new Movie(title, thisGenre, thisClass, duration, 1));
+                            thisMovieCollection.Insert(thisMovie);
+                        }
+                        else
+                        {
+                            thisMovieCollection.Search(thisMovie.Title).TotalCopies++;
+                            Console.WriteLine(thisMovieCollection.Search(thisMovie.Title).TotalCopies);
                         }
 
                         
 
-                        Console.WriteLine(thisMovieCollection.IsEmpty());
+                        //Console.WriteLine(thisMovieCollection.IsEmpty());
                         break;
                     case "2":
                         break;
