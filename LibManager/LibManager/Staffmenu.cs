@@ -68,7 +68,6 @@ namespace LibManager
                     case "1": //Add new DVD's of a new movie to the system
                         Movie thisMovie = GetMovieinfo();
 
-
                         if (!thisMovieCollection.Search(thisMovie))
                         {
                             thisMovieCollection.Insert(thisMovie);
@@ -76,31 +75,35 @@ namespace LibManager
                         else
                         {
                             thisMovieCollection.Search(thisMovie.Title).TotalCopies++;
-                            Console.WriteLine(thisMovieCollection.Search(thisMovie.Title).TotalCopies);
+                            //Console.WriteLine(thisMovieCollection.Search(thisMovie.Title).TotalCopies);
                         }
+
                         break;
 
                     case "2": //Remove DVD's of a movie from the system
                         Console.Write("Title: ");
                         string thisMovieTitle = Console.ReadLine();
-                        if (thisMovieCollection.Search(thisMovieTitle).TotalCopies > 1)
+
+                        if (thisMovieCollection.Search(thisMovieTitle) != null)
                         {
-                            thisMovieCollection.Search(thisMovieTitle).TotalCopies--;
-                        }
-                        else if (thisMovieCollection.Search(thisMovieTitle).TotalCopies == 1)
+                            if (thisMovieCollection.Search(thisMovieTitle).TotalCopies > 1)
+                            {
+                                thisMovieCollection.Search(thisMovieTitle).TotalCopies--;
+                            }
+                            if (thisMovieCollection.Search(thisMovieTitle).TotalCopies == 1)
+                            {
+                                thisMovieCollection.Delete(thisMovieCollection.Search(thisMovieTitle));
+                            }
+                        }else
                         {
-                            thisMovieCollection.Delete(thisMovieCollection.Search(thisMovieTitle));
-                        }
-                        else
-                        {
-                            Console.Write("Movie doesnt exist.");
+                            Console.WriteLine("Movie doesnt exist.");
                         }
                         
                         
                         break;
 
                     case "3": //Register a new member with the system
-
+                        Console.WriteLine("Name:");
                         break;
 
                     case "4": //Remove a registered memeber from the system
