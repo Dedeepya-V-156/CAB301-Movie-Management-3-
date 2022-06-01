@@ -237,7 +237,7 @@ using System.Linq;
             return false;
         }
 
-    public IMember Search(string FirstName, string LastName)
+    public IMember Find(IMember member)
     {
         // To be implemented by students in Phase 1
         if (!IsEmpty())
@@ -249,18 +249,18 @@ using System.Linq;
             while (l <= r)
             {
                 int m = Convert.ToInt16(Math.Floor((l + r) / 2));
-                if (LastName == members[m].LastName)
+                if (member.LastName == members[m].LastName)
                 {
-                    if (FirstName == members[m].FirstName)
+                    if (member.FirstName == members[m].FirstName)
                     {
                         Console.Write($"Found member: {members[m].ToString()}.\n");
                         return members[m];
                     }
-                    else if (FirstName[j] == members[m].FirstName[j])
+                    else if (member.FirstName[j] == members[m].FirstName[j])
                     {
                         j++;
                     }
-                    else if (FirstName[j] < members[m].FirstName[j])
+                    else if (member.FirstName[j] < members[m].FirstName[j])
                     {
                         r = m - 1;
                     }
@@ -270,11 +270,11 @@ using System.Linq;
                     }
 
                 }
-                else if (LastName[k] == members[m].LastName[k])
+                else if (member.LastName[k] == members[m].LastName[k])
                 {
                     k++;
                 }
-                else if (LastName[k] < members[m].LastName[k])
+                else if (member.LastName[k] < members[m].LastName[k])
                 {
                     r = m - 1;
                 }
@@ -283,7 +283,7 @@ using System.Linq;
                     l = m + 1;
                 }
             }
-            Console.Write($"Unable to find member:" + FirstName + " " + LastName + ".\n");
+            Console.Write($"Unable to find member:" + member.FirstName + " " + member.LastName + ".\n");
             return null;
         }
 

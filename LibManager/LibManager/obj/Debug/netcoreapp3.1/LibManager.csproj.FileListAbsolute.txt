@@ -67,3 +67,17 @@ C:\Users\MyPC\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\obj\
 C:\Users\MyPC\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.dll
 C:\Users\MyPC\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.pdb
 C:\Users\MyPC\Source\Repos\CAB301-Movie-Management-3-\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.genruntimeconfig.cache
+D:\301\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.exe
+D:\301\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.deps.json
+D:\301\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.runtimeconfig.json
+D:\301\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.runtimeconfig.dev.json
+D:\301\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.dll
+D:\301\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.pdb
+D:\301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.csproj.AssemblyReference.cache
+D:\301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.GeneratedMSBuildEditorConfig.editorconfig
+D:\301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.AssemblyInfoInputs.cache
+D:\301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.AssemblyInfo.cs
+D:\301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.csproj.CoreCompileInputs.cache
+D:\301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.dll
+D:\301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.pdb
+D:\301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.genruntimeconfig.cache
