@@ -144,7 +144,7 @@ namespace LibManager
                         }
                         break;
 
-                    case "5": //Display a member's contact number given the member's first name
+                    case "5": //Display a member's contact number given the member's full name
                         Console.Write("First name: ");
                         string firstNameDisplay = Console.ReadLine();
                         Console.Write("Last name: ");
@@ -153,7 +153,7 @@ namespace LibManager
                         Member thisMemberDisplay = new Member(firstNameDisplay, lastNameDisplay);
                         if (thisMembersCollection.Search(thisMemberDisplay))
                         {
-                            IMember MemberDisplay = thisMembersCollection.Search(firstNameDisplay, lastNameDisplay);
+                            IMember MemberDisplay = thisMembersCollection.Find(thisMemberDisplay);
                             Console.WriteLine("The member's contact number is: " + MemberDisplay.ContactNumber);
                         }
                         

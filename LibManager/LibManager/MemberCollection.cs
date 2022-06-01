@@ -253,7 +253,7 @@ using System.Linq;
                 {
                     if (member.FirstName == members[m].FirstName)
                     {
-                        Console.Write($"Found member: {members[m].ToString()}.\n");
+                        //Console.Write($"Found member: {members[m].ToString()}.\n");
                         return members[m];
                     }
                     else if (member.FirstName[j] == members[m].FirstName[j])
