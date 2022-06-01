@@ -140,7 +140,7 @@ namespace LibManager
                             {
                                 thisMembersCollection.Delete(thisMemberDelete);
                             }
-                            // Jacob is cool!
+                            
                         }
                         break;
 

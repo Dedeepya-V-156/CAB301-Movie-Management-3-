@@ -17,8 +17,6 @@ namespace LibManager
             Console.WriteLine();
             Console.WriteLine("Enter your choice ==> (1/2/3/4/5/6/0) ");
             Console.Clear();
-
-
         }
 
         
@@ -50,7 +48,7 @@ namespace LibManager
             }
             switch (choice = Console.ReadLine())
             {
-                case "1": 
+                case "1": //Browse al the movies
                   break;
 
                 case "2": // Displaying the information of a movie when provided with title
@@ -65,13 +63,18 @@ namespace LibManager
                         Console.WriteLine("Error the movie does not exist!");
                     break;
 
-                case "3":     
-                        break;
-                case "4":
+                case "3": // Borrow a movie DVD
+                          
                     break;
-                case "5":
+                case "4": // Return a movie DVD
+
                     break;
-                case "6":
+                case "5": // List current borrowing movies
+                    //TODO: add a field (and a property) into the Member class to store (and access) a collection of registered members who are holding this movie.
+
+                    break;
+                case "6": // Display the top 3 movies rented by the members
+
                     break;
                 case "0":
                     Mainmenu.PrintMainMenu();
