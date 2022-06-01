@@ -16,6 +16,7 @@ namespace LibManager
             Console.WriteLine("0. Return to the main menu");
             Console.WriteLine();
             Console.WriteLine("Enter your choice ==> (1/2/3/4/5/6/0) ");
+            Console.Clear();
 
 
         }
