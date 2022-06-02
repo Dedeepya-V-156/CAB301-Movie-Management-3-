@@ -41,12 +41,11 @@ namespace LibManager
             return false;
         }
         
-        //////Change parameters to IMemberCollection and IMovieCollection types
         public static void Init(IMemberCollection thisMembersCollection, IMovieCollection thisMovieCollection)
         {
             bool status = true;
 
-            while (status == true)
+            while (status)
             {
                 PrintMainMenu();
                 switch (Console.ReadLine())

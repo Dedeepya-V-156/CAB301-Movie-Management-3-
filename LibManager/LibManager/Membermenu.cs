@@ -21,33 +21,6 @@ namespace LibManager
         }
 
         static int first = 0, second = 0, third = 0;
-        static IMovie[] top3;
-        private static IMovie[] FindTopThree(IMovie[] allMovies)
-        {
-            foreach (IMovie movie in allMovies)
-            {
-                if (movie.NoBorrowings > first)
-                {
-                    third = second;
-                    second = first;
-                    first = movie.NoBorrowings;
-                    top3[0].Title = movie.Title;
-                }
-                else if (movie.NoBorrowings > second)
-                {
-                    third = second;
-                    second = movie.NoBorrowings;
-                    top3[1].Title = movie.Title;
-                }
-                else
-                {
-                    third = movie.NoBorrowings;
-                    top3[2].Title = movie.Title;
-                }
-            }
-            return top3;
-        }
-
 
         public static void Init(IMemberCollection thisMembersCollection, IMovieCollection thisMovieCollection, IMember member)
         {
@@ -67,8 +40,13 @@ namespace LibManager
                         {
                             foreach (IMovie movie in allMovies)
                             {
-                                Console.Write(movie.Title + " available copies: ");
-                                Console.WriteLine(movie.AvailableCopies);
+                                if(movie != null) ////////////////// A TEMPORARY FIX
+                                {
+                                    //////////////////TEST NUMBER OF AVAILABLE COPIES
+                                    Console.Write(movie.Title + " available copies: ");
+                                    Console.WriteLine(movie.AvailableCopies);
+                                }
+
                             }
                         }
                         else
@@ -76,50 +54,85 @@ namespace LibManager
                             Console.WriteLine("There is no movie in the library!");
                         }
 
-
                         break;
+
                     // Displaying the information of a movie when provided with title
                     case "2":
                         Console.Write("Title of the movie : ");
                         string movietitle = Console.ReadLine();
                         if (thisMovieCollection.Search(movietitle) != null)
                         {
-                            movietitle.ToString();
+                            //Modified by Emma so that it shows movie info
+                            Console.WriteLine(thisMovieCollection.Search(movietitle).ToString());
 
                         }
                         else
-                            Console.WriteLine("Error the movie does not exist!");
+                            Console.WriteLine("ERROR: the movie does not exist!");
                         break;
 
-                    // Borrow a movie DVD from the library
+                    // Borrow a movie DVD from the community library
                     case "3":
                         // Prompt the user for a tile and read it
                         Console.Write("Title of the movie : ");
                         string movietitle2 = Console.ReadLine();
+                        Console.WriteLine();
                         thisMovieCollection.Search(movietitle2).AddBorrower(member);
                         break;
 
+                    // Return a movie DVD to the community library
                     case "4":
                         // Prompt the user for a tile and read it
                         Console.Write("Title of the movie : ");
                         string movietitle3 = Console.ReadLine();
                         // Remove the member from the borrower list of that particular movie
                         thisMovieCollection.Search(movietitle3).RemoveBorrower(member);
-                        // Increase the available copies of that particular movie
-                        thisMovieCollection.Search(movietitle3).AvailableCopies++;
+                        Console.WriteLine();
+                        Console.WriteLine(movietitle3 + " is returned successfully!");
                         break;
 
+                    // List current movies that are currently borrowed by the registered member
                     case "5":
                         Console.WriteLine("List of movies borrowed by " + member.ToString());
                         //member.MoviesBorrowed
                         break;
 
+                    // Display the top three most frequently borrowed movies
                     case "6":
                         Console.WriteLine("Top three most borrowed movies are: ");
-                        IMovie[] topMovies = FindTopThree(thisMovieCollection.ToArray());
-                        foreach (IMovie movie in topMovies)
+                        IMovie[] top3= new IMovie[3];
+
+                        foreach (IMovie movie in thisMovieCollection.ToArray())
                         {
-                            Console.WriteLine(movie.Title + " " + movie.NoBorrowings);
+                            if (movie != null)
+                            {
+                                if (movie.NoBorrowings > first)
+                                {
+                                    third = second;
+                                    second = first;
+                                    first = movie.NoBorrowings;
+                                    top3[0] = thisMovieCollection.Search(movie.Title);
+                                }
+                                else if (movie.NoBorrowings > second)
+                                {
+                                    third = second;
+                                    second = movie.NoBorrowings;
+                                    top3[1] = thisMovieCollection.Search(movie.Title);
+                                }
+                                else
+                                {
+                                    third = movie.NoBorrowings;
+                                    top3[2] = thisMovieCollection.Search(movie.Title);
+                                }
+
+                            }
+                        }
+                        foreach (IMovie movie in top3)
+                        {
+                            if (movie != null)
+                            {
+                                Console.WriteLine(movie.Title + " " + movie.NoBorrowings);
+
+                            }
                         }
 
                         break;

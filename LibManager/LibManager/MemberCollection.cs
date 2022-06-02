@@ -135,7 +135,6 @@ using System.Linq;
                     {
                         if (aMember.FirstName == members[m].FirstName)
                         {
-                            Console.Write($"Member: {members[m].ToString()}, deleted.\n");
                             pos = m;
                         }
                         else if (aMember.FirstName[j] == members[m].FirstName[j])

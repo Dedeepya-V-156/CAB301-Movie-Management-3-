@@ -255,30 +255,32 @@ public class MovieCollection : IMovieCollection
 	// Post-condition: return an array of movies that are stored in dictionary order by their titles
 	public IMovie[] ToArray()
 	{
-		//To be completed
-		IMovie[] tempArray = new IMovie[count];
-		InOrderTraverse(root, tempArray, 0);
-		return tempArray;
+		IMovie[] movies = new IMovie[Number];
+		ToArray(root, movies, 0);
+		return movies;
 	}
 
-	private int InOrderTraverse(BTreeNode root, IMovie[] tempArray, int i)
+	//run an In-Order traversal of the binary tree
+	//Keep the correct index of the array
+	//and store the value of the movie in the correct position
+	private int ToArray(BTreeNode ptr, IMovie[] movies, int index)
 	{
-		if (root != null)
+		if (ptr == null)
+			return index;
+		//visit the left child first
+		if (ptr.LChild != null)
 		{
-            if (root.LChild != null)
-            {
-				i = InOrderTraverse(root.LChild, tempArray, i);
-			}
-
-			tempArray[i++] = root.Movie;
-
-			if (root.RChild != null)
-			{
-				i = InOrderTraverse(root.RChild, tempArray, i);
-			}
-			return i;
+			index = ToArray(ptr.LChild, movies, index);
 		}
-		return i;
+		//save the node value in movies array
+		movies[index++] = ptr.Movie;
+		//visit the right child 
+		if (ptr.RChild != null)
+		{
+			index = ToArray(ptr.RChild, movies, index);
+		}
+		return index;
+
 	}
 
 

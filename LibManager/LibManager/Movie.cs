@@ -84,7 +84,6 @@ public class Movie : IMovie
                     availablecopies--;
                     noborrows++;
                     Console.WriteLine(member.ToString() + " is added to the borrower's list");
-                    Console.WriteLine("Number of borrowers for this movie is " + noborrows.ToString());
                     return true;
                 }
                 else
@@ -153,7 +152,7 @@ public class Movie : IMovie
     //Post-condition: A string containing the title, genre, classification, duration, and the number of available copies of this movie has been returned
     public string ToString()
     {
-        return title + ", " + genre + ", " + classification + ", " + Convert.ToString(duration) + ", " + Convert.ToString(availablecopies);
+        return title + ", Genre:" + genre + ", Classification:" + classification + ", Duration:" + Convert.ToString(duration) + ", Available Copies:" + Convert.ToString(availablecopies);
     }
 }
 
