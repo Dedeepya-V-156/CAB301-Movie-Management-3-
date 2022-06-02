@@ -13,7 +13,7 @@ class Member : IMember
     private string contactNumber;
     private string pin;
     //Emma: added IMovieCollection to store a collection of registered members who are holding this movie
-    //private IMovieCollection moviesBorrowed;  // a collection of registered members who are holding this movie
+    private IMovieCollection moviesBorrowed;  // a collection of registered members who are holding this movie
 
 
     // Properties
@@ -22,7 +22,7 @@ class Member : IMember
     public string ContactNumber { get { return contactNumber; } set { contactNumber = value; } }  // Get and set the contact number of this member
     public string Pin { get { return pin; } set { pin = value; } }// Get and set a pin number
     
-    /*
+    
     //Emma: added this property as well
     //get all the members who are currently holding this movie
     public IMovieCollection MoviesBorrowed
@@ -30,7 +30,7 @@ class Member : IMember
         get { return moviesBorrowed; }
         set { moviesBorrowed = value; }
     }
-    */
+    
 
     // Constructor with member's first name and lastname
     public Member(string firstName, string lastName)
@@ -38,7 +38,7 @@ class Member : IMember
         this.firstName = firstName;
         this.lastName = lastName;
         //Emma: added this
-        //moviesBorrowed = new MovieCollection(5);
+        moviesBorrowed = new MovieCollection();
 
     }
 
@@ -52,7 +52,7 @@ class Member : IMember
         this.contactNumber = contactNumber;
         this.pin = pin;
         //Emma: added this
-        //moviesBorrowed = new MovieCollection(5);
+        moviesBorrowed = new MovieCollection();
 
     }
 

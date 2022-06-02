@@ -77,6 +77,8 @@ namespace LibManager
                         string movietitle2 = Console.ReadLine();
                         Console.WriteLine();
                         thisMovieCollection.Search(movietitle2).AddBorrower(member);
+                        // Add this movie to this member's borrowed list
+                        member.MoviesBorrowed.Insert(thisMovieCollection.Search(movietitle2));
                         break;
 
                     // Return a movie DVD to the community library
@@ -84,8 +86,14 @@ namespace LibManager
                         // Prompt the user for a tile and read it
                         Console.Write("Title of the movie : ");
                         string movietitle3 = Console.ReadLine();
+
                         // Remove the member from the borrower list of that particular movie
                         thisMovieCollection.Search(movietitle3).RemoveBorrower(member);
+
+                        // Removed this movie from this member's borrowed list
+                        member.MoviesBorrowed.Delete(thisMovieCollection.Search(movietitle3));
+
+                        // Print a message to console
                         Console.WriteLine();
                         Console.WriteLine(movietitle3 + " is returned successfully!");
                         break;
@@ -93,7 +101,13 @@ namespace LibManager
                     // List current movies that are currently borrowed by the registered member
                     case "5":
                         Console.WriteLine("List of movies borrowed by " + member.ToString());
-                        //member.MoviesBorrowed
+                        Console.WriteLine();
+                        // Print all the movies to the console
+                        foreach(IMovie movie in member.MoviesBorrowed.ToArray())
+                        {
+                            Console.WriteLine(movie.ToString());
+                        }
+                        
                         break;
 
                     // Display the top three most frequently borrowed movies
