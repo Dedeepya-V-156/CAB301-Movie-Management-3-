@@ -20,6 +20,34 @@ namespace LibManager
 
         }
 
+        static int first = 0, second = 0, third = 0;
+        static IMovie[] top3;
+        private static IMovie[] FindTopThree(IMovie[] allMovies)
+        {
+            foreach (IMovie movie in allMovies)
+            {
+                if (movie.NoBorrowings > first)
+                {
+                    third = second;
+                    second = first;
+                    first = movie.NoBorrowings;
+                    top3[0].Title = movie.Title;
+                }
+                else if (movie.NoBorrowings > second)
+                {
+                    third = second;
+                    second = movie.NoBorrowings;
+                    top3[1].Title = movie.Title;
+                }
+                else 
+                {
+                    third = movie.NoBorrowings;
+                    top3[2].Title = movie.Title;
+                }
+            }
+            return top3;
+        }
+
         //Emma: I don't think we need this
         /*
         public static void MemberDetails()
@@ -50,10 +78,18 @@ namespace LibManager
             }
             switch (choice = Console.ReadLine())
             {
+                // Displaying the information about all the movies in alphabetical order and number of available copies
                 case "1": 
-                  break;
+                    IMovie[] allMovies = thisMovieCollection.ToArray();
+                    foreach (IMovie movie in allMovies)
+                    {
+                        Console.Write(movie.Title + " available copies: ");
+                        Console.WriteLine(movie.AvailableCopies);
+                    }
 
-                case "2": // Displaying the information of a movie when provided with title
+                    break;
+                // Displaying the information of a movie when provided with title
+                case "2": 
                     Console.Write("Title of the movie : ");
                     string movietitle = Console.ReadLine();
                     if (thisMovieCollection.Search(movietitle) != null)
@@ -65,24 +101,39 @@ namespace LibManager
                         Console.WriteLine("Error the movie does not exist!");
                     break;
 
-                case "3":     
-                        break;
-                case "4":
+                // Borrow a movie DVD from the library
+                case "3":
                     // Prompt the user for a tile and read it
                     Console.Write("Title of the movie : ");
                     string movietitle2 = Console.ReadLine();
+                    thisMovieCollection.Search(movietitle2).AddBorrower(member);
+                    break;
+
+                case "4":
+                    // Prompt the user for a tile and read it
+                    Console.Write("Title of the movie : ");
+                    string movietitle3 = Console.ReadLine();
                     // Remove the member from the borrower list of that particular movie
-                    thisMovieCollection.Search(movietitle2).RemoveBorrower(member);
+                    thisMovieCollection.Search(movietitle3).RemoveBorrower(member);
                     // Increase the available copies of that particular movie
-                    thisMovieCollection.Search(movietitle2).AvailableCopies++;
+                    thisMovieCollection.Search(movietitle3).AvailableCopies++;
                     break;
 
                 case "5":
                     Console.WriteLine("List of movies borrowed by " + member.ToString());
                     //member.MoviesBorrowed
                     break;
+
                 case "6":
+                    Console.WriteLine("Top three most borrowed movies are: " );
+                    IMovie[] topMovies = FindTopThree(thisMovieCollection.ToArray());
+                    foreach (IMovie movie in topMovies)
+                    {
+                        Console.WriteLine(movie.Title + " " + movie.NoBorrowings);
+                    }
+                    
                     break;
+
                 case "0":
                     Mainmenu.PrintMainMenu();
                     break;
