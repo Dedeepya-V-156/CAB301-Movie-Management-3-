@@ -153,8 +153,7 @@ public class Movie : IMovie
     //Post-condition: A string containing the title, genre, classification, duration, and the number of available copies of this movie has been returned
     public string ToString()
     {
-        //To be completed
-        return title + ' ' + genre + ' ' + classification + ' ' + duration + ' ' + availablecopies + "\n";
+        return title + ", " + genre + ", " + classification + ", " + Convert.ToString(duration) + ", " + Convert.ToString(availablecopies);
     }
 }
 
