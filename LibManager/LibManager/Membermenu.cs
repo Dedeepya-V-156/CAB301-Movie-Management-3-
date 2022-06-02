@@ -74,28 +74,44 @@ namespace LibManager
                     case "3":
                         // Prompt the user for a tile and read it
                         Console.Write("Title of the movie : ");
-                        string movietitle2 = Console.ReadLine();
+                        string movietitle2 = Console.ReadLine().ToLower();
                         Console.WriteLine();
-                        thisMovieCollection.Search(movietitle2).AddBorrower(member);
-                        // Add this movie to this member's borrowed list
-                        member.MoviesBorrowed.Insert(thisMovieCollection.Search(movietitle2));
+                        if (thisMovieCollection.Search(movietitle2) != null)
+                        {
+                            thisMovieCollection.Search(movietitle2).AddBorrower(member);
+                            // Add this movie to this member's borrowed list
+                            member.MoviesBorrowed.Insert(thisMovieCollection.Search(movietitle2));
+                        }
+                        else
+                        {
+                            Console.WriteLine("ERROR: this movie does not exists in library!");
+                        }
+ 
                         break;
 
                     // Return a movie DVD to the community library
                     case "4":
                         // Prompt the user for a tile and read it
                         Console.Write("Title of the movie : ");
-                        string movietitle3 = Console.ReadLine();
+                        string movietitle3 = Console.ReadLine().ToLower();
 
-                        // Remove the member from the borrower list of that particular movie
-                        thisMovieCollection.Search(movietitle3).RemoveBorrower(member);
+                        if(thisMovieCollection.Search(movietitle3) != null)
+                        {
+                            // Remove the member from the borrower list of that particular movie
+                            thisMovieCollection.Search(movietitle3).RemoveBorrower(member);
 
-                        // Removed this movie from this member's borrowed list
-                        member.MoviesBorrowed.Delete(thisMovieCollection.Search(movietitle3));
+                            // Removed this movie from this member's borrowed list
+                            member.MoviesBorrowed.Delete(thisMovieCollection.Search(movietitle3));
 
-                        // Print a message to console
-                        Console.WriteLine();
-                        Console.WriteLine(movietitle3 + " is returned successfully!");
+                            // Print a message to console
+                            Console.WriteLine();
+                            Console.WriteLine(movietitle3 + " is returned successfully!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("ERROR: this movie does not exists in library!");
+                        }
+
                         break;
 
                     // List current movies that are currently borrowed by the registered member

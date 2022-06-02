@@ -160,9 +160,16 @@ namespace LibManager
                         Member thisMemberDelete = new Member(firstNameDelete, lastNameDelete);
                         if (thisMembersCollection.Search(thisMemberDelete))
                         {
-                            if (true) //TODO: Check if number of borrowed movies == 0.
+                            // Check if number of borrowed movies == 0.
+                            if (thisMemberDelete.MoviesBorrowed.IsEmpty()) 
                             {
                                 thisMembersCollection.Delete(thisMemberDelete);
+                                Console.WriteLine(thisMemberDelete.ToString() + " is removed successfully!");
+                            }
+                            else
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine("MEMBER CANNOT BE REMOVED, This member has DVD on loan!");
                             }
                             // Jacob is cool!
                         }
@@ -182,10 +189,16 @@ namespace LibManager
                         }
                         
                         break;
+                    //Display all memebers who are currently renting a particular movie
+                    case "6":
+                        // Prompt user to enter a movie title
+                        Console.WriteLine("Please enter the title of movie: ");
+                        string myTitle = Console.ReadLine().ToLower();
+                        // Print name of members who borrowed this movie
+                        Console.WriteLine("Members who borrowed " + myTitle + " are:");
+                        thisMovieCollection.Search(myTitle).Borrowers.ToString();
 
-                    case "6": //Display all memebers who are currently renting a particular movie
-
-                        break; //comment123
+                        break; 
 
                     case "0":
                         status = false;
