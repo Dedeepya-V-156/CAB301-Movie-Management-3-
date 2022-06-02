@@ -5,8 +5,8 @@ namespace LibManager
 {
     public class Staffmenu
     {
-        
 
+      
         private static void PrintStaffMenu()
         {
             //Console.Clear();
@@ -22,7 +22,7 @@ namespace LibManager
             Console.WriteLine();
             Console.WriteLine("Enter your choice ==> (1/2/3/4/5/6/0) ");
         }
-
+        /* CANNOT USE THIS BECAUSE IF A MOVIE EXISTS IN THE LIBRARY WE ONLY NEED TO ADD NUMBER OF COPIES
         public static Movie GetMovieinfo()
         {
             Console.Write("Title: ");
@@ -51,10 +51,16 @@ namespace LibManager
 
             Console.Write("Duration: ");
             int thisduration = Convert.ToInt32(Console.ReadLine());
-            
 
-            return new Movie(title, thisGenre, thisClass, thisduration, 1);
+            // Added by Emma to save total copies as well
+            Console.Write("Total Copies: ");
+            int thisTotalCopies = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine();
+
+            return new Movie(title, thisGenre, thisClass, thisduration, thisTotalCopies);
         }
+        */
 
         public static void Init(IMemberCollection thisMembersCollection, IMovieCollection thisMovieCollection)
         {
@@ -65,20 +71,54 @@ namespace LibManager
                 PrintStaffMenu();
                 switch (Console.ReadLine())
                 {
-                    case "1": //Add new DVD's of a new movie to the system
-                        Movie thisMovie = GetMovieinfo();
+                    //Add DVD's of a new/existing movie to the system
+                    case "1": 
+                        Console.Write("Title: ");
+                        string title = Console.ReadLine();
 
-                        if (!thisMovieCollection.Search(thisMovie))
+                        // If movie doesn't exists in the library
+                        if (thisMovieCollection.Search(title) == null)
                         {
+                            int optionGenre = UserInterface.GetOption("Please select one of the following:",
+                                "Action", "Comedy", "History", "Drama", "Western");
+                            List<MovieGenre> typesGenre = new List<MovieGenre>() 
+                            {
+                                MovieGenre.Action,
+                                MovieGenre.Comedy,
+                                MovieGenre.Drama,
+                                MovieGenre.History,
+                                MovieGenre.Western
+                            };
+                            var thisGenre = typesGenre[optionGenre];
+
+                            int optionClass = UserInterface.GetOption("Please select one of the following:",
+                            "G", "PG", "M", "M15Plus");
+                            List<MovieClassification> typesClass = new List<MovieClassification>() 
+                            {
+                                MovieClassification.G,
+                                MovieClassification.M,
+                                MovieClassification.PG,
+                                MovieClassification.M15Plus
+                            };
+                            var thisClass = typesClass[optionClass];
+
+                            Console.Write("Duration: ");
+                            int thisduration = Convert.ToInt32(Console.ReadLine());
+
+                            // Added by Emma to save total copies as well
+                            Console.Write("Total Copies: ");
+                            int thisTotalCopies = Convert.ToInt32(Console.ReadLine());
+
+                            Console.WriteLine();
+                            Movie thisMovie = new Movie(title, thisGenre, thisClass, thisduration, thisTotalCopies);
                             thisMovieCollection.Insert(thisMovie);
                         }
                         else
                         {
-                            //Emma: changed this so that more than one copy of DVD can be added at a time
+                            //Added by Emma: more than one copy of DVD can be added at a time
                             Console.WriteLine("Please enter number of copies to add: ");
-                            int copies = UserInterface.GetInt(Console.ReadLine());
-                            thisMovieCollection.Search(thisMovie.Title).TotalCopies = thisMovieCollection.Search(thisMovie.Title).TotalCopies + copies;
-                            //Console.WriteLine(thisMovieCollection.Search(thisMovie.Title).TotalCopies);
+                            int copies = Convert.ToInt32(Console.ReadLine());
+                            thisMovieCollection.Search(title).TotalCopies = thisMovieCollection.Search(title).TotalCopies + copies;
                         }
 
                         break;
@@ -92,12 +132,19 @@ namespace LibManager
                             if (thisMovieCollection.Search(thisMovieTitle).TotalCopies > 1)
                             {
                                 thisMovieCollection.Search(thisMovieTitle).TotalCopies--;
+                                thisMovieCollection.Search(thisMovieTitle).AvailableCopies--; // Added by Emma
+
+                                // Added by Emma: To verify/test
+                                Console.WriteLine(thisMovieCollection.Search(thisMovieTitle).ToString());
+                                Console.WriteLine("Total copies are: " + thisMovieCollection.Search(thisMovieTitle).TotalCopies);
                             }
                             if (thisMovieCollection.Search(thisMovieTitle).TotalCopies == 1)
                             {
                                 thisMovieCollection.Delete(thisMovieCollection.Search(thisMovieTitle));
+ 
                             }
-                        }else
+                        }
+                        else
                         {
                             Console.WriteLine("Movie doesnt exist.");
                         }
@@ -105,9 +152,9 @@ namespace LibManager
 
                     case "3": //Register a new member with the system
                         Console.Write("First name: ");
-                        string firstName = Console.ReadLine();
+                        string firstName = Console.ReadLine().ToLower();
                         Console.Write("Last name: ");
-                        string lastName = Console.ReadLine();
+                        string lastName = Console.ReadLine().ToLower();
                         Console.Write("Phone number: ");
                         string contactNumber = (Console.ReadLine());
                         if (IMember.IsValidContactNumber(contactNumber))

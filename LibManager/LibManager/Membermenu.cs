@@ -80,12 +80,22 @@ namespace LibManager
             {
                 // Displaying the information about all the movies in alphabetical order and number of available copies
                 case "1": 
+
                     IMovie[] allMovies = thisMovieCollection.ToArray();
-                    foreach (IMovie movie in allMovies)
+                    // If there is any movie in the library print the title and available copies
+                    if (allMovies.Length != 0)
                     {
-                        Console.Write(movie.Title + " available copies: ");
-                        Console.WriteLine(movie.AvailableCopies);
+                        foreach (IMovie movie in allMovies)
+                        {
+                            Console.Write(movie.Title + " available copies: ");
+                            Console.WriteLine(movie.AvailableCopies);
+                        }
                     }
+                    else
+                    {
+                        Console.WriteLine("There is no movie in the library!");
+                    }
+ 
 
                     break;
                 // Displaying the information of a movie when provided with title
