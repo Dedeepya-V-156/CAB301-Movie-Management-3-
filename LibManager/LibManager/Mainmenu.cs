@@ -8,7 +8,6 @@ namespace LibManager
     public class Mainmenu
     {
 
-        // int temp = 0;
 
         public static void PrintMainMenu()
         {
@@ -63,7 +62,19 @@ namespace LibManager
 
                     case "2":
                         Console.WriteLine("Member Entry");
-
+                        Console.Write("First Name: ");
+                        string FirstName = Console.ReadLine();
+                        Console.Write("Last Name: ");
+                        string LastName = Console.ReadLine();
+                        string password = UserInterface.GetPassword("Password");
+                        IMember thisMember = new Member(FirstName, LastName);
+                        if (thisMembersCollection.Find(thisMember) != null)
+                        {
+                            if (thisMembersCollection.Find(thisMember).Pin == password)
+                            {
+                                Membermenu.Init(thisMembersCollection, thisMovieCollection, thisMember);
+                            }
+                        }
 
                         break;
 

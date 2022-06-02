@@ -16,10 +16,12 @@ namespace LibManager
             Console.WriteLine("0. Return to the main menu");
             Console.WriteLine();
             Console.WriteLine("Enter your choice ==> (1/2/3/4/5/6/0) ");
-            Console.Clear();
+
+
         }
 
-        
+        //Emma: I don't think we need this
+        /*
         public static void MemberDetails()
         {
             Console.Write("Enter the first name");
@@ -31,9 +33,9 @@ namespace LibManager
             int pword = Int32.Parse(password);
             //return movietitle;
         }
-        
+        */
 
-        public static void Init(MemberCollection thisMembersCollection, MovieCollection thisMovieCollection)
+        public static void Init(IMemberCollection thisMembersCollection, IMovieCollection thisMovieCollection, IMember member)
         {
             
             string choice;
@@ -48,7 +50,7 @@ namespace LibManager
             }
             switch (choice = Console.ReadLine())
             {
-                case "1": //Browse al the movies
+                case "1": 
                   break;
 
                 case "2": // Displaying the information of a movie when provided with title
@@ -63,18 +65,23 @@ namespace LibManager
                         Console.WriteLine("Error the movie does not exist!");
                     break;
 
-                case "3": // Borrow a movie DVD
-                          
+                case "3":     
+                        break;
+                case "4":
+                    // Prompt the user for a tile and read it
+                    Console.Write("Title of the movie : ");
+                    string movietitle2 = Console.ReadLine();
+                    // Remove the member from the borrower list of that particular movie
+                    thisMovieCollection.Search(movietitle2).RemoveBorrower(member);
+                    // Increase the available copies of that particular movie
+                    thisMovieCollection.Search(movietitle2).AvailableCopies++;
                     break;
-                case "4": // Return a movie DVD
 
+                case "5":
+                    Console.WriteLine("List of movies borrowed by " + member.ToString());
+                    //member.MoviesBorrowed
                     break;
-                case "5": // List current borrowing movies
-                    //TODO: add a field (and a property) into the Member class to store (and access) a collection of registered members who are holding this movie.
-
-                    break;
-                case "6": // Display the top 3 movies rented by the members
-
+                case "6":
                     break;
                 case "0":
                     Mainmenu.PrintMainMenu();
