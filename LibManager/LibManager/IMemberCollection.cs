@@ -48,6 +48,9 @@ public interface IMemberCollection
     // Post-condition: return true if this memeber is in the member collection; return false otherwise; member collection remains unchanged.
     public bool Search(IMember member);
 
+    //Emma: added this
+    public IMember Find(IMember member);
+
     // Remove all the members in this member collection
     // Pre-condition: nil
     // Post-condition: no member in this member collection 

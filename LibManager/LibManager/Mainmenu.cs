@@ -41,8 +41,9 @@ namespace LibManager
             }
             return false;
         }
-
-        public static void Init(MemberCollection thisMembersCollection, MovieCollection thisMovieCollection)
+        
+        //////Change parameters to IMemberCollection and IMovieCollection types
+        public static void Init(IMemberCollection thisMembersCollection, IMovieCollection thisMovieCollection)
         {
             bool status = true;
 

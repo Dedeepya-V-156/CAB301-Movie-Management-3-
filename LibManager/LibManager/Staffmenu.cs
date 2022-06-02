@@ -56,7 +56,7 @@ namespace LibManager
             return new Movie(title, thisGenre, thisClass, thisduration, 1);
         }
 
-        public static void Init(MemberCollection thisMembersCollection, MovieCollection thisMovieCollection)
+        public static void Init(IMemberCollection thisMembersCollection, IMovieCollection thisMovieCollection)
         {
             bool status = true;
 
@@ -74,7 +74,10 @@ namespace LibManager
                         }
                         else
                         {
-                            thisMovieCollection.Search(thisMovie.Title).TotalCopies++;
+                            //Emma: changed this so that more than one copy of DVD can be added at a time
+                            Console.WriteLine("Please enter number of copies to add: ");
+                            int copies = UserInterface.GetInt(Console.ReadLine());
+                            thisMovieCollection.Search(thisMovie.Title).TotalCopies = thisMovieCollection.Search(thisMovie.Title).TotalCopies + copies;
                             //Console.WriteLine(thisMovieCollection.Search(thisMovie.Title).TotalCopies);
                         }
 
@@ -140,11 +143,11 @@ namespace LibManager
                             {
                                 thisMembersCollection.Delete(thisMemberDelete);
                             }
-                            
+                            // Jacob is cool!
                         }
                         break;
 
-                    case "5": //Display a member's contact number given the member's full name
+                    case "5": //Display a member's contact number given the member's first name
                         Console.Write("First name: ");
                         string firstNameDisplay = Console.ReadLine();
                         Console.Write("Last name: ");
@@ -161,7 +164,7 @@ namespace LibManager
 
                     case "6": //Display all memebers who are currently renting a particular movie
 
-                        break;
+                        break; //comment123
 
                     case "0":
                         status = false;
