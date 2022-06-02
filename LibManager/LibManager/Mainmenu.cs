@@ -63,9 +63,9 @@ namespace LibManager
                     case "2":
                         Console.WriteLine("Member Entry");
                         Console.Write("First Name: ");
-                        string FirstName = Console.ReadLine();
+                        string FirstName = Console.ReadLine().ToLower();
                         Console.Write("Last Name: ");
-                        string LastName = Console.ReadLine();
+                        string LastName = Console.ReadLine().ToLower();
                         string password = UserInterface.GetPassword("Password");
                         IMember thisMember = new Member(FirstName, LastName);
                         if (thisMembersCollection.Find(thisMember) != null)
