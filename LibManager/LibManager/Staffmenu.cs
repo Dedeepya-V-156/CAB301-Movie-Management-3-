@@ -84,6 +84,7 @@ namespace LibManager
                             Console.WriteLine("Please enter number of copies to add: ");
                             int copies = Convert.ToInt32(Console.ReadLine());
                             thisMovieCollection.Search(title).TotalCopies = thisMovieCollection.Search(title).TotalCopies + copies;
+                            thisMovieCollection.Search(title).AvailableCopies = thisMovieCollection.Search(title).AvailableCopies + copies;
 
                             Console.WriteLine();
                             Console.WriteLine("Number of copies for " + title + " is now: " + thisMovieCollection.Search(title).TotalCopies);
@@ -189,6 +190,7 @@ namespace LibManager
                         }
                         
                         break;
+
                     //Display all memebers who are currently renting a particular movie
                     case "6":
                         // Prompt user to enter a movie title
@@ -202,7 +204,7 @@ namespace LibManager
 
                     case "0":
                         status = false;
-                        Mainmenu.PrintMainMenu();
+                        Mainmenu.Init(thisMembersCollection,thisMovieCollection);
                         break;
                 }
                 
