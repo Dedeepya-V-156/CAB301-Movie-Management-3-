@@ -3,6 +3,7 @@ namespace LibManager
 {
     public class Membermenu
     {
+        /*
         private static void PrintMemberMenu()
         {
             Console.WriteLine("========================= Member Menu ==========================");
@@ -19,16 +20,30 @@ namespace LibManager
 
 
         }
+        */
+        //static int first = 0, second = 0, third = 0;
 
-        static int first = 0, second = 0, third = 0;
-
-        public static void Init(IMemberCollection thisMembersCollection, IMovieCollection thisMovieCollection, IMember member)
+        public static void Init(IMemberCollection thisMembersCollection, IMovieCollection thisMovieCollection, 
+            IMember thisMember)
         {
+
+
             bool status = true;
 
             while (status)
             {
-                PrintMemberMenu();
+                Console.WriteLine("========================= Member Menu ==========================");
+                Console.WriteLine();
+                Console.WriteLine("1. Browse all the movies");
+                Console.WriteLine("2. Display all the information about a movie, given the title of the movie");
+                Console.WriteLine("3. Borrow a movie DVD");
+                Console.WriteLine("4. Return a movie DVD");
+                Console.WriteLine("5. List current borrowing movies");
+                Console.WriteLine("6. Display the top 3 movies rented by the members");
+                Console.WriteLine("0. Return to the main menu");
+                Console.WriteLine();
+                Console.WriteLine("Enter your choice ==> (1/2/3/4/5/6/0) ");
+
                 switch (Console.ReadLine())
                 {
                     // Displaying the information about all the movies in alphabetical order and number of available copies
@@ -78,9 +93,10 @@ namespace LibManager
                         Console.WriteLine();
                         if (thisMovieCollection.Search(movietitle2) != null)
                         {
-                            thisMovieCollection.Search(movietitle2).AddBorrower(member);
-                            // Add this movie to this member's borrowed list
-                            member.MoviesBorrowed.Insert(thisMovieCollection.Search(movietitle2));
+                            // Add this member to the borrowers //////////////////////////////////////////////
+                            thisMovieCollection.Search(movietitle2).AddBorrower(thisMember);
+                            // Add this movie to this member's borrowers list
+                            thisMember.MoviesBorrowed.Insert(thisMovieCollection.Search(movietitle2));
                         }
                         else
                         {
@@ -97,11 +113,10 @@ namespace LibManager
 
                         if(thisMovieCollection.Search(movietitle3) != null)
                         {
-                            // Remove the member from the borrower list of that particular movie
-                            thisMovieCollection.Search(movietitle3).RemoveBorrower(member);
-
+                            // Remove the member from the borrowers list of that particular movie /////////////////////////
+                            thisMovieCollection.Search(movietitle3).RemoveBorrower(thisMember);
                             // Removed this movie from this member's borrowed list
-                            member.MoviesBorrowed.Delete(thisMovieCollection.Search(movietitle3));
+                            thisMember.MoviesBorrowed.Delete(thisMovieCollection.Search(movietitle3));
 
                             // Print a message to console
                             Console.WriteLine();
@@ -116,18 +131,25 @@ namespace LibManager
 
                     // List current movies that are currently borrowed by the registered member
                     case "5":
-                        Console.WriteLine("List of movies borrowed by " + member.ToString());
+                        //////////////////////////////////////////////////////////////////
+                        Console.WriteLine("List of movies borrowed by " + thisMember.ToString());
                         Console.WriteLine();
                         // Print all the movies to the console
-                        foreach(IMovie movie in member.MoviesBorrowed.ToArray())
+                        foreach(IMovie movie in thisMember.MoviesBorrowed.ToArray())
                         {
-                            Console.WriteLine(movie.ToString());
+                            if (movie != null)
+                            {
+                                Console.WriteLine(movie.ToString());
+                            }
                         }
                         
                         break;
 
                     // Display the top three most frequently borrowed movies
                     case "6":
+
+                        int first = 0, second = 0, third = 0;
+
                         Console.WriteLine("Top three most borrowed movies are: ");
                         IMovie[] top3= new IMovie[3];
 
@@ -169,7 +191,7 @@ namespace LibManager
 
                     case "0":
                         status = false;
-                        Mainmenu.PrintMainMenu();
+                        Mainmenu.Init(thisMembersCollection,thisMovieCollection);
                         break;
                 }
             }

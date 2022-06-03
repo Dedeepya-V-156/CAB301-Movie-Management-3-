@@ -7,28 +7,7 @@ namespace LibManager
 {
     public class Mainmenu
     {
-
-
-        public static void PrintMainMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("============================================================");
-            Console.WriteLine("Welcome to Community Library Movie DVD Management System");
-            Console.WriteLine("============================================================");
-            Console.WriteLine();
-            Console.WriteLine("=========================Main Menu==========================");
-            Console.WriteLine();
-            Console.WriteLine("1. Staff Login ");
-            Console.WriteLine("2. Member Login ");
-            Console.WriteLine("0. Exit ");
-            Console.WriteLine();
-            Console.WriteLine("Enter you choice ==> (1/2/0) ");
-
-        }
-
-
-        
-
+        /*
         private static bool StaffLogin()
         {
             Console.Write("Username: ");
@@ -40,23 +19,47 @@ namespace LibManager
             }
             return false;
         }
-        
+        */
         public static void Init(IMemberCollection thisMembersCollection, IMovieCollection thisMovieCollection)
         {
+
+            //welcome messade
+            Console.Clear();
+            Console.WriteLine("============================================================");
+            Console.WriteLine("Welcome to Community Library Movie DVD Management System");
+            Console.WriteLine("============================================================");
+            Console.WriteLine();
+            start:
+            Console.WriteLine("1. Staff Login ");
+            Console.WriteLine("2. Member Login ");
+            Console.WriteLine("0. Exit ");
+            Console.WriteLine();
+            Console.WriteLine("Enter you choice ==> (1/2/0) ");
+
             bool status = true;
 
             while (status)
             {
-                PrintMainMenu();
+
                 switch (Console.ReadLine())
                 {
                     case "1":
                         Console.WriteLine("Staff Entry");
-                        if (StaffLogin())
+
+                        Console.Write("Username: ");
+                        string username = Console.ReadLine();
+                        string password = UserInterface.GetPassword("Password");
+                        if (username == "staff" && password == "today123")
                         {
                             Staffmenu.Init(thisMembersCollection, thisMovieCollection);
                         }
-
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("ERROR: Staff login details are incorrect, please try again");
+                            Console.WriteLine();
+                            goto start;
+                        }
                         break;
 
                     case "2":
@@ -65,29 +68,33 @@ namespace LibManager
                         string FirstName = Console.ReadLine().ToLower();
                         Console.Write("Last Name: ");
                         string LastName = Console.ReadLine().ToLower();
-                        string password = UserInterface.GetPassword("Password");
-                        IMember thisMember = new Member(FirstName, LastName);
-                        if (thisMembersCollection.Find(thisMember) != null)
+                        string password2 = UserInterface.GetPassword("Password");
+                        IMember loggedInMember = new Member(FirstName, LastName);
+                        if (thisMembersCollection.Find(loggedInMember) != null)
                         {
-                            if (thisMembersCollection.Find(thisMember).Pin == password)
+                            if (thisMembersCollection.Find(loggedInMember).Pin == password2)
                             {
-                                Membermenu.Init(thisMembersCollection, thisMovieCollection, thisMember);
+                                Membermenu.Init(thisMembersCollection, thisMovieCollection, loggedInMember);
                             }
                         }
-
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("ERROR: Member login details are incorrect, please try again");
+                            Console.WriteLine();
+                            goto start;
+                        }
                         break;
 
                     case "0":
                         status = false;
                         break;
-                }
-                
+                    default: break;
+                }               
 
             }
             
         }
-
-
 
     }
 }
