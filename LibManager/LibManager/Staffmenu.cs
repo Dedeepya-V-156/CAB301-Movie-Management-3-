@@ -37,13 +37,19 @@ namespace LibManager
                     case "1": 
                         Console.Write("Title: ");
                         string title = Console.ReadLine();
-
+                        int optionGenre;
                         // If movie doesn't exists in the library
                         if (thisMovieCollection.Search(title) == null)
                         {
-                            int optionGenre = UserInterface.GetOption("Please select one of the following:",
+                            if (title.Length == 0)
+                            {
+                                Console.WriteLine("Enter a valid movie name!");
+                                break;
+
+                            }
+                                optionGenre = UserInterface.GetOption("Please select one of the following:",
                                 "Action", "Comedy", "History", "Drama", "Western");
-                            List<MovieGenre> typesGenre = new List<MovieGenre>() 
+                                List<MovieGenre> typesGenre = new List<MovieGenre>()
                             {
                                 MovieGenre.Action,
                                 MovieGenre.Comedy,
@@ -51,6 +57,8 @@ namespace LibManager
                                 MovieGenre.History,
                                 MovieGenre.Western
                             };
+                            
+
                             var thisGenre = typesGenre[optionGenre];
 
                             int optionClass = UserInterface.GetOption("Please select one of the following:",
@@ -138,6 +146,9 @@ namespace LibManager
                             {
                                 Member thisMember = new Member(firstName, lastName, contactNumber, pin);
                                 thisMembersCollection.Add(thisMember);
+                                Console.WriteLine("Member has been added successfully!");
+                                Console.WriteLine();
+
                             }
                             else
                             {
@@ -150,6 +161,7 @@ namespace LibManager
                             Console.WriteLine();
                             Console.WriteLine("ERROR: Invalid contact number.");
                         }
+                        
                         break;
 
                     case "4": //Remove a registered memeber from the system

@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ehqCNnNETdQs31e0rDLniLZ9vjlgMCU/Lnv6/Q2PWEsN7n1kDi7DlUd+J8PtBJ50H4YxSeoUjs3aLgtNDI0iFw==",
+  "dgSpecHash": "9RCffD5VvynQ/afC1yqUnk0Ghy6AkLMX1eSmenKJhj+ZSXBPIJYqFFFAURBQc9xrmwitGVtaEh2la1j2CIvboA==",
   "success": true,
-  "projectFilePath": "D:\\301\\LibManager\\LibManager\\LibManager.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\n10913858\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.25\\microsoft.netcore.app.host.win-x64.3.1.25.nupkg.sha512",
-    "C:\\Users\\n10913858\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "C:\\Users\\n10913858\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\n10913858\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\MyPC\\Source\\Repos\\CAB301-Movie-Management-3\\LibManager\\LibManager\\LibManager.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
