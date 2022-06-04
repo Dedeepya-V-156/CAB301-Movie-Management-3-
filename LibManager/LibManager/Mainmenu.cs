@@ -62,7 +62,7 @@ namespace LibManager
                         }
                         break;
 
-                    case "2":
+                    case "2": // Jack, updated the member entry so that a member reference is passed to Init instead of a new Member object.
                         Console.WriteLine("Member Entry");
                         Console.Write("First Name: ");
                         string FirstName = Console.ReadLine().ToLower();
@@ -74,7 +74,7 @@ namespace LibManager
                         {
                             if (thisMembersCollection.Find(loggedInMember).Pin == password2)
                             {
-                                Membermenu.Init(thisMembersCollection, thisMovieCollection, loggedInMember);
+                                Membermenu.Init(thisMembersCollection, thisMovieCollection, thisMembersCollection.Find(loggedInMember));
                             }
                             else
                             {

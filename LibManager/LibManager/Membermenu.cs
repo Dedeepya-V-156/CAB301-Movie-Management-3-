@@ -89,7 +89,7 @@ namespace LibManager
                     case "3":
                         // Prompt the user for a tile and read it
                         Console.Write("Title of the movie : ");
-                        string movietitle2 = Console.ReadLine().ToLower();
+                        string movietitle2 = Console.ReadLine();
                         Console.WriteLine();
                         if (thisMovieCollection.Search(movietitle2) != null)
                         {
@@ -109,7 +109,7 @@ namespace LibManager
                     case "4":
                         // Prompt the user for a tile and read it
                         Console.Write("Title of the movie : ");
-                        string movietitle3 = Console.ReadLine().ToLower();
+                        string movietitle3 = Console.ReadLine();
 
                         if(thisMovieCollection.Search(movietitle3) != null)
                         {

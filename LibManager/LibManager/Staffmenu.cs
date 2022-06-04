@@ -71,7 +71,7 @@ namespace LibManager
                                 MovieClassification.M15Plus
                             };
                             var thisClass = typesClass[optionClass];
-
+                            
                             Console.Write("Duration: ");
                             int thisduration = Convert.ToInt32(Console.ReadLine());
 
@@ -80,7 +80,7 @@ namespace LibManager
                             int thisTotalCopies = Convert.ToInt32(Console.ReadLine());
 
                             Console.WriteLine();
-                            Movie thisMovie = new Movie(title, thisGenre, thisClass, thisduration, thisTotalCopies);
+                            IMovie thisMovie = new Movie(title, thisGenre, thisClass, thisduration, thisTotalCopies);
                             thisMovieCollection.Insert(thisMovie);
 
                             Console.WriteLine(thisMovie.ToString() + " is added successfully!!!");
@@ -184,7 +184,7 @@ namespace LibManager
                                 Console.WriteLine();
                                 Console.WriteLine("MEMBER CANNOT BE REMOVED, This member has DVD on loan!");
                             }
-                            // Jacob is cool!
+                            
                         }
                         break;
 
