@@ -79,6 +79,7 @@ namespace LibManager
                         {
                             //Modified by Emma so that it shows movie info
                             Console.WriteLine(thisMovieCollection.Search(movietitle).ToString());
+                            //Console.WriteLine(thisMovieCollection.Search(movietitle).Borrowers.ToString());
 
                         }
                         else
@@ -100,7 +101,7 @@ namespace LibManager
                         }
                         else
                         {
-                            Console.WriteLine("ERROR: this movie does not exist in library!");
+                            Console.WriteLine("ERROR: this movie does not exists in library!");
                         }
  
                         break;
