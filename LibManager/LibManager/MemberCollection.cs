@@ -235,7 +235,7 @@ using System.Linq;
                         {
                             return members[m];
                         }
-                        else if (member.FirstName[j] == members[m].FirstName[j])
+                        else if (member.FirstName[j] == members[m].FirstName[j] && j < member.FirstName.Length - 1)
                         {
                             j++;
                         }
@@ -249,7 +249,7 @@ using System.Linq;
                         }
 
                     }
-                    else if (member.LastName[k] == members[m].LastName[k])
+                    else if (member.LastName[k] == members[m].LastName[k] && k < member.LastName.Length - 1)// include a conditional here so that the k++ doesnt index beyond the length of the last name
                     {
                         k++;
                     }

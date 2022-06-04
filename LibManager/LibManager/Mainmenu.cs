@@ -76,6 +76,13 @@ namespace LibManager
                             {
                                 Membermenu.Init(thisMembersCollection, thisMovieCollection, loggedInMember);
                             }
+                            else
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine("ERROR: Member login details are incorrect, please try again");
+                                Console.WriteLine();
+                                goto start;
+                            }
                         }
                         else
                         {

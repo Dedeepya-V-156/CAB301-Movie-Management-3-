@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9RCffD5VvynQ/afC1yqUnk0Ghy6AkLMX1eSmenKJhj+ZSXBPIJYqFFFAURBQc9xrmwitGVtaEh2la1j2CIvboA==",
+  "dgSpecHash": "znQ242bNcsuifMsyJc+Bq5R8VUS9IIz2FiED7htrJzZDhULTAD/17mPf9Etu8dUN0DaXb7Vx9wOVfRLDib2M/A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\MyPC\\Source\\Repos\\CAB301-Movie-Management-3\\LibManager\\LibManager\\LibManager.csproj",
+  "projectFilePath": "/Users/hogan/Desktop/LibManager/CAB301-Movie-Management-3--main/LibManager/LibManager/LibManager.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
