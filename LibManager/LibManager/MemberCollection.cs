@@ -78,19 +78,22 @@ using System.Linq;
                         if (j == 1)
                         {
                             pos++;
-                            break;
+                        break;
                         }
                         if (j == -1)
                         {
                             if (pos == 0)
                             {
-                                break;
+                            //Console.WriteLine("Member has been added successfully!");
+                            //Console.WriteLine();
+                            break;
                             }
                             pos--;
                         }
                         if (j == 0)
                         {
                             Console.WriteLine("Duplicate member!");
+                             break;
                             return;
                         }
                     }

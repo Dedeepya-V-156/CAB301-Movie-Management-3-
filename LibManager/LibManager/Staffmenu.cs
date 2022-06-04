@@ -146,6 +146,7 @@ namespace LibManager
                             {
                                 Member thisMember = new Member(firstName, lastName, contactNumber, pin);
                                 thisMembersCollection.Add(thisMember);
+                                //Need to verify the print statements
                                 Console.WriteLine("Member has been added successfully!");
                                 Console.WriteLine();
 
@@ -174,7 +175,7 @@ namespace LibManager
                         if (thisMembersCollection.Search(thisMemberDelete))
                         {
                             // Check if number of borrowed movies == 0.
-                            if (thisMemberDelete.MoviesBorrowed.IsEmpty()) 
+                            if (thisMemberDelete.MoviesBorrowed.IsEmpty())
                             {
                                 thisMembersCollection.Delete(thisMemberDelete);
                                 Console.WriteLine(thisMemberDelete.ToString() + " is removed successfully!");
@@ -184,8 +185,10 @@ namespace LibManager
                                 Console.WriteLine();
                                 Console.WriteLine("MEMBER CANNOT BE REMOVED, This member has DVD on loan!");
                             }
-                            
+
                         }
+                        else
+                            Console.WriteLine("Error the member is not registered !");
                         break;
 
                     case "5": //Display a member's contact number given the member's first name
@@ -200,7 +203,9 @@ namespace LibManager
                             IMember MemberDisplay = thisMembersCollection.Find(thisMemberDisplay);
                             Console.WriteLine("The member's contact number is: " + MemberDisplay.ContactNumber);
                         }
-                        
+                        else
+                            Console.WriteLine("Error the member is not registered !");
+
                         break;
 
                     //Display all memebers who are currently renting a particular movie
@@ -209,9 +214,15 @@ namespace LibManager
                         Console.WriteLine("Please enter the title of movie: ");
                         string myTitle = Console.ReadLine().ToLower();
                         // Print name of members who borrowed this movie
-                        Console.WriteLine("Members who borrowed " + myTitle + " are:");
-                        thisMovieCollection.Search(myTitle).Borrowers.ToString();
-
+                        if (myTitle.Length != 0)
+                        {
+                            Console.WriteLine("Members who borrowed " + myTitle + " are:");
+                            //Displays null reference
+                            thisMovieCollection.Search(myTitle).Borrowers.ToString();
+                        }
+                        else
+                            Console.WriteLine("Error the movie is unavailable !");
+                        
                         break; 
 
                     case "0":

@@ -100,7 +100,7 @@ namespace LibManager
                         }
                         else
                         {
-                            Console.WriteLine("ERROR: this movie does not exists in library!");
+                            Console.WriteLine("ERROR: this movie does not exist in library!");
                         }
  
                         break;
