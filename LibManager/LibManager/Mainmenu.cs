@@ -94,9 +94,11 @@ namespace LibManager
                         break;
 
                     case "0":
-                        status = false;
+                        System.Environment.Exit(0);
+                        //status = false;
                         break;
                     default: break;
+
                 }               
 
             }
