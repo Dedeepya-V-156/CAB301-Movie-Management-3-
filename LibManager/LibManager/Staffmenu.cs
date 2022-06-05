@@ -104,30 +104,53 @@ namespace LibManager
                     case "2": //Remove DVD's of a movie from the system
                         Console.Write("Title: ");
                         string thisMovieTitle = Console.ReadLine();
-
+                        // Check if movie exists
                         if (thisMovieCollection.Search(thisMovieTitle) != null)
                         {
+                            // Check if movie's total copies is more than one
                             if (thisMovieCollection.Search(thisMovieTitle).TotalCopies > 1)
                             {
-                                thisMovieCollection.Search(thisMovieTitle).TotalCopies--;
-                                thisMovieCollection.Search(thisMovieTitle).AvailableCopies--; // Added by Emma
+                                thisMovieCollection.Search(thisMovieTitle).AvailableCopies--;
+                                // Check if there are copies available
+                                if (thisMovieCollection.Search(thisMovieTitle).AvailableCopies >= 0)
+                                {
+                                    thisMovieCollection.Search(thisMovieTitle).TotalCopies--;
+                                    Console.WriteLine();
+                                    Console.WriteLine(thisMovieCollection.Search(thisMovieTitle).ToString());
+                                    Console.WriteLine("Total copies are: " + thisMovieCollection.Search(thisMovieTitle).TotalCopies);
+                                }
 
-                                // Added by Emma: To verify/test
-                                Console.WriteLine();
-                                Console.WriteLine(thisMovieCollection.Search(thisMovieTitle).ToString());
-                                Console.WriteLine("Total copies are: " + thisMovieCollection.Search(thisMovieTitle).TotalCopies);
+                                else
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine("ERROR: There are no available copies to delete!");
+                                    thisMovieCollection.Search(thisMovieTitle).AvailableCopies++;
+
+                                }
+
+
                             }
-                            if (thisMovieCollection.Search(thisMovieTitle).TotalCopies == 1)
+
+                            // Check if there is exactly one copy and it's available
+                            else if (thisMovieCollection.Search(thisMovieTitle).TotalCopies == 1 &&
+                                thisMovieCollection.Search(thisMovieTitle).AvailableCopies == 1)
                             {
                                 Console.WriteLine();
                                 Console.WriteLine("The movie " + thisMovieCollection.Search(thisMovieTitle).Title + " is removed from the library!");
                                 thisMovieCollection.Delete(thisMovieCollection.Search(thisMovieTitle));
  
                             }
+                            // Check if there is one copy but not available (borrowed by a member)
+                            else if (thisMovieCollection.Search(thisMovieTitle).TotalCopies == 1 &&
+                                thisMovieCollection.Search(thisMovieTitle).AvailableCopies == 0)
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine("ERROR: cannot remove the movie, this movie is bottowed by a member");
+                            }
                         }
                         else
                         {
-                            Console.WriteLine("Movie doesnt exist.");
+                            Console.WriteLine("Movie doesnt exist in the system.");
                         }
                         break;
 
@@ -171,6 +194,7 @@ namespace LibManager
                         string lastNameDelete = Console.ReadLine().ToLower();
 
                         Member thisMemberDelete = new Member(firstNameDelete, lastNameDelete);
+                        // Check if member exists
                         if (thisMembersCollection.Search(thisMemberDelete))
                         {
                             // Check if number of borrowed movies == 0.
@@ -185,6 +209,10 @@ namespace LibManager
                                 Console.WriteLine("MEMBER CANNOT BE REMOVED, This member has DVD on loan!");
                             }
                             
+                        }
+                        else
+                        {
+                            Console.WriteLine("Member doesn't exists!");
                         }
                         break;
 
@@ -211,8 +239,17 @@ namespace LibManager
                         // Print name of members who borrowed this movie
                         if (myTitle.Length != 0 && thisMovieCollection.Search(myTitle) != null)
                         {
-                            Console.WriteLine("Members who borrowed " + myTitle + " are:");
-                            Console.WriteLine(thisMovieCollection.Search(myTitle).Borrowers.ToString());
+                            //Added by emma to print to the console if no one is borrowed the movie
+                            if (thisMovieCollection.Search(myTitle).Borrowers.IsEmpty())
+                            {
+                                Console.WriteLine("No member is currently borrowing this Movie");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Members who borrowed " + myTitle + " are:");
+                                Console.WriteLine(thisMovieCollection.Search(myTitle).Borrowers.ToString());
+                            }
+
                         }
                         else
                             Console.WriteLine("Error movie does not exist !");
@@ -228,7 +265,7 @@ namespace LibManager
                         break;
 
                     default:
-                        Console.WriteLine("Error make a valid choice from 0 - 6 ");
+                        Console.WriteLine("Error: make a valid choice between 0-6");
                         break;
                 }
                 
