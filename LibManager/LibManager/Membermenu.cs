@@ -95,10 +95,17 @@ namespace LibManager
                         Console.WriteLine();
                         if (thisMovieCollection.Search(movietitle2) != null)
                         {
-                            // Add this member to the borrowers //////////////////////////////////////////////
-                            thisMovieCollection.Search(movietitle2).AddBorrower(thisMember);
-                            // Add this movie to this member's borrowers list
-                            thisMember.MoviesBorrowed.Insert(thisMovieCollection.Search(movietitle2));
+                            if (thisMember.MoviesBorrowed.Number < 5) // Emma: prevent members to borrow more than 5 movies
+                            {
+                                // Add this member to the borrowers //////////////////////////////////////////////
+                                thisMovieCollection.Search(movietitle2).AddBorrower(thisMember);
+                                // Add this movie to this member's borrowers list
+                                thisMember.MoviesBorrowed.Insert(thisMovieCollection.Search(movietitle2));
+                            }
+                            else
+                            {
+                                Console.WriteLine("Error: cannot borrow more than five movies");
+                            }
                         }
                         else
                         {
