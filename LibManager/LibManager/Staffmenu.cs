@@ -209,8 +209,14 @@ namespace LibManager
                         Console.WriteLine("Please enter the title of movie: ");
                         string myTitle = Console.ReadLine();
                         // Print name of members who borrowed this movie
-                        Console.WriteLine("Members who borrowed " + myTitle + " are:");
-                        Console.WriteLine(thisMovieCollection.Search(myTitle).Borrowers.ToString());
+                        if (myTitle.Length != 0 && thisMovieCollection.Search(myTitle) != null)
+                        {
+                            Console.WriteLine("Members who borrowed " + myTitle + " are:");
+                            Console.WriteLine(thisMovieCollection.Search(myTitle).Borrowers.ToString());
+                        }
+                        else
+                            Console.WriteLine("Error movie does not exist !");
+                        
                         
                         // A movie has a borrower
 
