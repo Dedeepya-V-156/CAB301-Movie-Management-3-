@@ -4,26 +4,7 @@ namespace LibManager
 {
     public class Membermenu
     {
-        /*
-        private static void PrintMemberMenu()
-        {
-            Console.WriteLine("========================= Member Menu ==========================");
-            Console.WriteLine();
-            Console.WriteLine("1. Browse all the movies");
-            Console.WriteLine("2. Display all the information about a movie, given the title of the movie");
-            Console.WriteLine("3. Borrow a movie DVD");
-            Console.WriteLine("4. Return a movie DVD");
-            Console.WriteLine("5. List current borrowing movies");
-            Console.WriteLine("6. Display the top 3 movies rented by the members");
-            Console.WriteLine("0. Return to the main menu");
-            Console.WriteLine();
-            Console.WriteLine("Enter your choice ==> (1/2/3/4/5/6/0) ");
-
-
-        }
-        */
-        //static int first = 0, second = 0, third = 0;
-
+ 
         public static void Init(IMemberCollection thisMembersCollection, IMovieCollection thisMovieCollection, 
             IMember thisMember)
         {
@@ -56,13 +37,9 @@ namespace LibManager
                         {
                             foreach (IMovie movie in allMovies)
                             {
-                                if(movie != null) ////////////////// A TEMPORARY FIX
-                                {
                                     //////////////////TEST NUMBER OF AVAILABLE COPIES
                                     Console.Write(movie.Title + " available copies: ");
                                     Console.WriteLine(movie.AvailableCopies);
-                                }
-
                             }
                         }
                         else
@@ -146,10 +123,7 @@ namespace LibManager
                         // Print all the movies to the console
                         foreach(IMovie movie in thisMember.MoviesBorrowed.ToArray())
                         {
-                            if (movie != null)
-                            {
                                 Console.WriteLine(movie.ToString());
-                            }
                         }
                         
                         break;
@@ -164,8 +138,6 @@ namespace LibManager
 
                         foreach (IMovie movie in thisMovieCollection.ToArray())
                         {
-                            if (movie != null)
-                            {
                                 if (movie.NoBorrowings > first)
                                 {
                                     third = second;
@@ -187,8 +159,6 @@ namespace LibManager
                                     third = movie.NoBorrowings;
                                     top3[2] = thisMovieCollection.Search(movie.Title);
                                 }
-
-                            }
                         }
                         foreach (IMovie movie in top3)
                         {
@@ -204,6 +174,10 @@ namespace LibManager
                     case "0":
                         status = false;
                         Mainmenu.Init(thisMembersCollection,thisMovieCollection);
+                        break;
+
+                    default:
+                        Console.WriteLine("Error make a valid choice from 0 - 6 ");
                         break;
                 }
             }
