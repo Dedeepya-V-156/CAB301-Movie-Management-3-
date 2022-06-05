@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\MyPC\\.nuget\\packages\\": {}
+    "C:\\Users\\jhoga\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MyPC\\Desktop\\cab301 ass3\\LibManager\\LibManager\\LibManager.csproj",
+      "projectUniqueName": "C:\\Users\\jhoga\\OneDrive\\Documents\\CAB301\\LibManager\\LibManager\\LibManager.csproj",
       "projectName": "LibManager",
-      "projectPath": "C:\\Users\\MyPC\\Desktop\\cab301 ass3\\LibManager\\LibManager\\LibManager.csproj",
-      "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MyPC\\Desktop\\cab301 ass3\\LibManager\\LibManager\\obj\\",
+      "projectPath": "C:\\Users\\jhoga\\OneDrive\\Documents\\CAB301\\LibManager\\LibManager\\LibManager.csproj",
+      "packagesPath": "C:\\Users\\jhoga\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jhoga\\OneDrive\\Documents\\CAB301\\LibManager\\LibManager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jhoga\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

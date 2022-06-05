@@ -122,3 +122,17 @@ C:\Users\MyPC\Desktop\cab301 ass3\LibManager\LibManager\obj\Debug\netcoreapp3.1\
 C:\Users\MyPC\Desktop\cab301 ass3\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.dll
 C:\Users\MyPC\Desktop\cab301 ass3\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.pdb
 C:\Users\MyPC\Desktop\cab301 ass3\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.genruntimeconfig.cache
+C:\Users\jhoga\OneDrive\Documents\CAB301\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.exe
+C:\Users\jhoga\OneDrive\Documents\CAB301\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.deps.json
+C:\Users\jhoga\OneDrive\Documents\CAB301\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.runtimeconfig.json
+C:\Users\jhoga\OneDrive\Documents\CAB301\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.runtimeconfig.dev.json
+C:\Users\jhoga\OneDrive\Documents\CAB301\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.dll
+C:\Users\jhoga\OneDrive\Documents\CAB301\LibManager\LibManager\bin\Debug\netcoreapp3.1\LibManager.pdb
+C:\Users\jhoga\OneDrive\Documents\CAB301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.csproj.AssemblyReference.cache
+C:\Users\jhoga\OneDrive\Documents\CAB301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jhoga\OneDrive\Documents\CAB301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.AssemblyInfoInputs.cache
+C:\Users\jhoga\OneDrive\Documents\CAB301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.AssemblyInfo.cs
+C:\Users\jhoga\OneDrive\Documents\CAB301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.csproj.CoreCompileInputs.cache
+C:\Users\jhoga\OneDrive\Documents\CAB301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.dll
+C:\Users\jhoga\OneDrive\Documents\CAB301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.pdb
+C:\Users\jhoga\OneDrive\Documents\CAB301\LibManager\LibManager\obj\Debug\netcoreapp3.1\LibManager.genruntimeconfig.cache

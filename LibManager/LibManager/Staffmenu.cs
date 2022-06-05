@@ -174,9 +174,9 @@ namespace LibManager
                         if (thisMembersCollection.Search(thisMemberDelete))
                         {
                             // Check if number of borrowed movies == 0.
-                            if (thisMemberDelete.MoviesBorrowed.IsEmpty()) 
+                            if (thisMembersCollection.Find(thisMemberDelete).MoviesBorrowed.IsEmpty()) 
                             {
-                                thisMembersCollection.Delete(thisMemberDelete);
+                                thisMembersCollection.Delete(thisMembersCollection.Find(thisMemberDelete));
                                 Console.WriteLine(thisMemberDelete.ToString() + " is removed successfully!");
                             }
                             else
