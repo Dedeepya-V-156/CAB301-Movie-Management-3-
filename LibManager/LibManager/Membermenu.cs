@@ -164,15 +164,18 @@ namespace LibManager
                                     third = second;
                                     second = first;
                                     first = movie.NoBorrowings;
+                                    top3[2] = top3[1];
+                                    top3[1] = top3[0];
                                     top3[0] = thisMovieCollection.Search(movie.Title);
                                 }
                                 else if (movie.NoBorrowings > second)
                                 {
                                     third = second;
                                     second = movie.NoBorrowings;
+                                    top3[2] = top3[1];
                                     top3[1] = thisMovieCollection.Search(movie.Title);
                                 }
-                                else
+                                else if (movie.NoBorrowings > third)
                                 {
                                     third = movie.NoBorrowings;
                                     top3[2] = thisMovieCollection.Search(movie.Title);
