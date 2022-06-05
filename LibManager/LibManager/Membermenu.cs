@@ -205,6 +205,10 @@ namespace LibManager
                         status = false;
                         Mainmenu.Init(thisMembersCollection,thisMovieCollection);
                         break;
+
+                    default:
+                        Console.WriteLine("Error make a valid choice from 0 - 6 ");
+                        break;
                 }
             }
         }

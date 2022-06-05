@@ -97,7 +97,9 @@ namespace LibManager
                         System.Environment.Exit(0);
                         //status = false;
                         break;
-                    default: break;
+                    default:
+                        Console.WriteLine("Error make a valid choice from 0 - 2 ");
+                        break;
 
                 }               
 

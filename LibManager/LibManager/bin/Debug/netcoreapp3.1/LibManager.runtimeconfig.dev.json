@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\jhoga\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\jhoga\\.nuget\\packages"
+      "C:\\Users\\MyPC\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\MyPC\\.nuget\\packages"
     ]
   }
 }
