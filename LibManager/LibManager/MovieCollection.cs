@@ -78,13 +78,12 @@ public class MovieCollection : IMovieCollection
 		{
 			root = new BTreeNode(movie);
 			count++;
-			Console.WriteLine(movie.ToString() + " is inserted as root");
 			return true;
 		}
 		//Check to see if the movie is already in the Movie collection list
 		else if (Search(movie))
 		{
-			Console.WriteLine(movie.ToString() + " is already in the movie collecton");
+			//Console.WriteLine(movie.ToString() + " is already in the movie collecton");
 			return false;
 
 		}
@@ -93,7 +92,7 @@ public class MovieCollection : IMovieCollection
 		{
 			Insert(movie, root);
 			count++;
-			Console.WriteLine(movie.ToString() + " is added into the movie collection");
+			//Console.WriteLine(movie.ToString() + " is added into the movie collection");
 			return true;
 		}
 
@@ -149,7 +148,7 @@ public class MovieCollection : IMovieCollection
 					ptr.Movie = ptr.LChild.Movie;
 					ptr.LChild = ptr.LChild.LChild;
 					count--;
-					Console.WriteLine(movie.ToString() + " is deleted from this collection list");
+					//Console.WriteLine(movie.ToString() + " is deleted from this collection list");
 					return true;
 				}
 				else
@@ -165,7 +164,7 @@ public class MovieCollection : IMovieCollection
 					ptr.Movie = p.Movie;
 					pp.RChild = p.LChild;
 					count--;
-					Console.WriteLine(movie.ToString() + " is deleted from this collection list");
+					//Console.WriteLine(movie.ToString() + " is deleted from this collection list");
 					return true;
 
 				}
@@ -184,7 +183,7 @@ public class MovieCollection : IMovieCollection
 					//Remove the root
 					root = c;
 					count--;
-					Console.WriteLine(movie.ToString() + " is deleted from this collection list");
+					//Console.WriteLine(movie.ToString() + " is deleted from this collection list");
 					return true;
 				}
 
@@ -195,7 +194,7 @@ public class MovieCollection : IMovieCollection
 						//Remove the left node
 						parent.LChild = c;
 						count--;
-						Console.WriteLine(movie.ToString() + " is deleted from this collection list");
+						//Console.WriteLine(movie.ToString() + " is deleted from this collection list");
 						return true;
 					}
 					else
@@ -203,7 +202,7 @@ public class MovieCollection : IMovieCollection
 						//Remove the right node
 						parent.RChild = c;
 						count--;
-						Console.WriteLine(movie.ToString() + " is deleted from this collection list");
+						//Console.WriteLine(movie.ToString() + " is deleted from this collection list");
 						return true;
 					}
 				}
