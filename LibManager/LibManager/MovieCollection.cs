@@ -73,18 +73,36 @@ public class MovieCollection : IMovieCollection
 	// Post-condition: the movie has been added into this movie collection and return true, if the movie is not in this movie collection; otherwise, the movie has not been added into this movie collection and return false.
 	public bool Insert(IMovie movie)
 	{
-		//To be completed
+		//Check to see if this is the first movie inserted 
 		if (root == null)
 		{
 			root = new BTreeNode(movie);
 			count++;
+			Console.WriteLine(movie.ToString() + " is inserted as root");
 			return true;
 		}
+		//Check to see if the movie is already in the Movie collection list
+		else if (Search(movie))
+		{
+			Console.WriteLine(movie.ToString() + " is already in the movie collecton");
+			return false;
+
+		}
+		//Add movie if it's not in the movie collection
 		else
-			return Insert(movie, root);
+		{
+			Insert(movie, root);
+			count++;
+			Console.WriteLine(movie.ToString() + " is added into the movie collection");
+			return true;
+		}
+
 	}
 
-	private bool Insert(IMovie movie, BTreeNode ptr)
+	//a private method to insert a movie into its correct location 
+	//Compares each movie title alphabetically
+	//and place them in the correct spot in movie collection binary tree
+	private void Insert(IMovie movie, BTreeNode ptr)
 	{
 		if (movie.CompareTo(ptr.Movie) < 0)
 		{
@@ -92,71 +110,68 @@ public class MovieCollection : IMovieCollection
 				ptr.LChild = new BTreeNode(movie);
 			else
 				Insert(movie, ptr.LChild);
-			count++;
-			return true;
 		}
-		if (movie.CompareTo(ptr.Movie) > 0)
+		else
 		{
 			if (ptr.RChild == null)
 				ptr.RChild = new BTreeNode(movie);
 			else
 				Insert(movie, ptr.RChild);
-			count++;
-			return true;
-		}
-		else
-		{
-			return false;
 		}
 	}
-
 
 	// Delete a movie from this movie collection
 	// Pre-condition: nil
 	// Post-condition: the movie is removed out of this movie collection and return true, if it is in this movie collection; return false, if it is not in this movie collection
 	public bool Delete(IMovie movie)
 	{
-		//To be completed
-		BTreeNode ptr = root; // search reference
-		BTreeNode parent = null; // parent of ptr
+		//search for the movie and its parent
+		BTreeNode ptr = root;
+		BTreeNode parent = null;
 		while ((ptr != null) && (movie.CompareTo(ptr.Movie) != 0))
 		{
 			parent = ptr;
-			if (movie.CompareTo(ptr.Movie) < 0) // move to the left child of ptr
+			if (movie.CompareTo(ptr.Movie) < 0)
 				ptr = ptr.LChild;
 			else
 				ptr = ptr.RChild;
 		}
-
-		if (ptr != null) // if the search was successful
+		//if search is successful
+		if (ptr != null)
 		{
-			// case 3: item has two children
+			//movie has two children
 			if ((ptr.LChild != null) && (ptr.RChild != null))
 			{
-				// find the right-most node in left subtree of ptr
-				if (ptr.LChild.RChild == null) // a special case: the right subtree of ptr.LChild is empty
+				//find the right-most node in left subtree of ptr
+				if (ptr.LChild.RChild == null)
 				{
+					//copy the movie at left child to ptr 
 					ptr.Movie = ptr.LChild.Movie;
 					ptr.LChild = ptr.LChild.LChild;
+					count--;
+					Console.WriteLine(movie.ToString() + " is deleted from this collection list");
+					return true;
 				}
 				else
 				{
 					BTreeNode p = ptr.LChild;
-					BTreeNode pp = ptr; // parent of p
+					BTreeNode pp = ptr;
 					while (p.RChild != null)
 					{
 						pp = p;
 						p = p.RChild;
 					}
-					// copy the item at p to ptr
+					//copy the movie at p(right-most node) to ptr 
 					ptr.Movie = p.Movie;
 					pp.RChild = p.LChild;
+					count--;
+					Console.WriteLine(movie.ToString() + " is deleted from this collection list");
+					return true;
 
 				}
-				count--;
-				return true;
 			}
-			else // cases 1 & 2: item has no or only one child
+			//movie has one or no child
+			else
 			{
 				BTreeNode c;
 				if (ptr.LChild != null)
@@ -164,26 +179,43 @@ public class MovieCollection : IMovieCollection
 				else
 					c = ptr.RChild;
 
-				// remove node ptr
-				if (ptr == root) //need to change root
+				if (ptr == root)
+				{
+					//Remove the root
 					root = c;
+					count--;
+					Console.WriteLine(movie.ToString() + " is deleted from this collection list");
+					return true;
+				}
+
 				else
 				{
 					if (ptr == parent.LChild)
+					{
+						//Remove the left node
 						parent.LChild = c;
+						count--;
+						Console.WriteLine(movie.ToString() + " is deleted from this collection list");
+						return true;
+					}
 					else
+					{
+						//Remove the right node
 						parent.RChild = c;
+						count--;
+						Console.WriteLine(movie.ToString() + " is deleted from this collection list");
+						return true;
+					}
 				}
-				count--;
-				return true;
 			}
-
 		}
 		else
 		{
+			Console.WriteLine("Movie doesn't exists in the collection");
 			return false;
 		}
 	}
+
 
 	// Search for a movie in this movie collection
 	// pre: nil
