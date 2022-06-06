@@ -4,11 +4,45 @@ namespace LibManager
 {
     public class Membermenu
     {
- 
+        private static IMovie[] top3Elements(IMovieCollection movies)
+        {
+            int first = movies.ToArray()[0].NoBorrowings, second = 0, third = 0;
+
+            Console.WriteLine("Top three most borrowed movies are: ");
+            IMovie[] top3 = new IMovie[3];
+            top3[0] = movies.Search(movies.ToArray()[0].Title);
+
+            //foreach (IMovie movie in thisMovieCollection.ToArray())
+            for (int i = 1; i < movies.ToArray().Length; i++)
+            {
+                if (movies.ToArray()[i].NoBorrowings > first)
+                {
+                    third = second;
+                    second = first;
+                    first = movies.ToArray()[i].NoBorrowings;
+                    top3[2] = top3[1];
+                    top3[1] = top3[0];
+                    top3[0] = movies.Search(movies.ToArray()[i].Title);
+                }
+                else if (movies.ToArray()[i].NoBorrowings > second)
+                {
+                    third = second; 
+                    second = movies.ToArray()[i].NoBorrowings;
+                    top3[2] = top3[1];
+                    top3[1] = movies.Search(movies.ToArray()[i].Title);
+                }
+                else if (movies.ToArray()[i].NoBorrowings > third)
+                {
+                    third = movies.ToArray()[i].NoBorrowings;
+                    top3[2] = movies.Search(movies.ToArray()[i].Title);
+                }
+            }
+            return top3;
+        }
+
         public static void Init(IMemberCollection thisMembersCollection, IMovieCollection thisMovieCollection, 
             IMember thisMember)
         {
-
 
             bool status = true;
 
@@ -105,8 +139,8 @@ namespace LibManager
                             thisMember.MoviesBorrowed.Delete(thisMovieCollection.Search(movietitle3));
 
                             // Print a message to console
-                            Console.WriteLine();
-                            Console.WriteLine(movietitle3 + " is returned successfully!");
+                            //Console.WriteLine();
+                            //Console.WriteLine(movietitle3 + " is returned successfully!");
                         }
                         else
                         {
@@ -131,35 +165,8 @@ namespace LibManager
                     // Display the top three most frequently borrowed movies
                     case "6":
 
-                        int first = 0, second = 0, third = 0;
-
-                        Console.WriteLine("Top three most borrowed movies are: ");
-                        IMovie[] top3= new IMovie[3];
-
-                        foreach (IMovie movie in thisMovieCollection.ToArray())
-                        {
-                                if (movie.NoBorrowings > first)
-                                {
-                                    third = second;
-                                    second = first;
-                                    first = movie.NoBorrowings;
-                                    top3[2] = top3[1];
-                                    top3[1] = top3[0];
-                                    top3[0] = thisMovieCollection.Search(movie.Title);
-                                }
-                                else if (movie.NoBorrowings > second)
-                                {
-                                    third = second;
-                                    second = movie.NoBorrowings;
-                                    top3[2] = top3[1];
-                                    top3[1] = thisMovieCollection.Search(movie.Title);
-                                }
-                                else if (movie.NoBorrowings > third)
-                                {
-                                    third = movie.NoBorrowings;
-                                    top3[2] = thisMovieCollection.Search(movie.Title);
-                                }
-                        }
+                        IMovie[] top3 = top3Elements(thisMovieCollection);
+ 
                         foreach (IMovie movie in top3)
                         {
                             if (movie != null)
