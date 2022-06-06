@@ -228,6 +228,8 @@ namespace LibManager
                             IMember MemberDisplay = thisMembersCollection.Find(thisMemberDisplay);
                             Console.WriteLine("The member's contact number is: " + MemberDisplay.ContactNumber);
                         }
+                        else
+                            Console.WriteLine("Error the member is not registered !");
                         
                         break;
 

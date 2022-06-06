@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MyPC\\Desktop\\CAB301 Assignment3 new\\LibManager\\LibManager\\LibManager.csproj": {}
+    "C:\\Users\\MyPC\\Desktop\\CAB301 Assignment3 -new\\LibManager\\LibManager\\LibManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MyPC\\Desktop\\CAB301 Assignment3 new\\LibManager\\LibManager\\LibManager.csproj": {
+    "C:\\Users\\MyPC\\Desktop\\CAB301 Assignment3 -new\\LibManager\\LibManager\\LibManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MyPC\\Desktop\\CAB301 Assignment3 new\\LibManager\\LibManager\\LibManager.csproj",
+        "projectUniqueName": "C:\\Users\\MyPC\\Desktop\\CAB301 Assignment3 -new\\LibManager\\LibManager\\LibManager.csproj",
         "projectName": "LibManager",
-        "projectPath": "C:\\Users\\MyPC\\Desktop\\CAB301 Assignment3 new\\LibManager\\LibManager\\LibManager.csproj",
+        "projectPath": "C:\\Users\\MyPC\\Desktop\\CAB301 Assignment3 -new\\LibManager\\LibManager\\LibManager.csproj",
         "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MyPC\\Desktop\\CAB301 Assignment3 new\\LibManager\\LibManager\\obj\\",
+        "outputPath": "C:\\Users\\MyPC\\Desktop\\CAB301 Assignment3 -new\\LibManager\\LibManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
