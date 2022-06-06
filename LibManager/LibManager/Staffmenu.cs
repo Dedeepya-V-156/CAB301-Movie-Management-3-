@@ -169,7 +169,7 @@ namespace LibManager
                             {
                                 Member thisMember = new Member(firstName, lastName, contactNumber, pin);
                                 thisMembersCollection.Add(thisMember);
-                                Console.WriteLine("Member has been added successfully!");
+                                //Console.WriteLine("Member has been added successfully!");
                                 Console.WriteLine();
 
                             }

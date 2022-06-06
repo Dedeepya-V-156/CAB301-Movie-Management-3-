@@ -58,67 +58,73 @@ using System.Linq;
             return count == 0;
         }
 
-        // Add a new member to this member collection
-        // Pre-condition: this member collection is not full
-        // Post-condition: a new member is added to the member collection and the members are sorted in ascending order by their full names;
-        // No duplicate will be added into this the member collection
-        public void Add(IMember member)
+    // Add a new member to this member collection
+    // Pre-condition: this member collection is not full
+    // Post-condition: a new member is added to the member collection and the members are sorted in ascending order by their full names;
+    // No duplicate will be added into this the member collection
+    public void Add(IMember member)
+    {
+        //Check if array is not full
+        if (!IsFull())
         {
-            // To be implemented by students in Phase 1
-            if (!IsFull())
+            bool found = false;
+
+            //Check to see if member exists in array
+            int l = 0, r = count - 1;
+            while (l <= r)
             {
-                if (count > 0)
+                int m = l + (r - l) / 2;
+
+                int result = member.CompareTo(members[m]);
+
+                //Check to see if member is at midpoint
+                if (result == 0)
                 {
-                    int pos = count - 1;
-                    int j = 0;
-                    while (j != 1)
-                    {
-                        j = member.CompareTo(members[pos]);
-
-                        if (j == 1)
-                        {
-                            pos++;
-                            break;
-                        }
-                        if (j == -1)
-                        {
-                            if (pos == 0)
-                            {
-                                break;
-                            }
-                            pos--;
-                        }
-                        if (j == 0)
-                        {
-                            Console.WriteLine("Duplicate member!");
-                            return;
-                        }
-                    }
-                    for (int i = count; i >= pos; i--)
-                    {
-                        if (i != pos)
-                        {
-                            members[i] = members[i - 1];
-                        }
-                        else
-                        {
-                            members[pos] = (Member)member;
-                            count++;
-                            return;
-                        }
-                    }
+                    found = true;
+                    break;
                 }
-                members[count] = (Member)member;
-                count++;
-                return;
+                else if (result < 0)
+                {
+                    r = m - 1;
+                }
+                else
+                {
+                    l = m + 1;
+                }
             }
-            Console.Write($"Members is full.");
-        }
 
-        // Remove a given member out of this member collection
-        // Pre-condition: nil
-        // Post-condition: the given member has been removed from this member collection, if the given meber was in the member collection
-        public void Delete(IMember aMember)
+            //Check if member is not found
+            if (!found)
+            {
+                int i;
+                //Starting from end of array, move elements to the right
+                //till we find a full name that is smaller or get to the beginning of array
+                for (i = count - 1; (i >= 0 && member.CompareTo(members[i]) < 0); i--)
+                {
+
+                    members[i + 1] = members[i];
+                }
+                // Add the member in the sorted spot in the array
+                members[i + 1] = (Member)member;
+                Console.WriteLine("The new member " + member.ToString() + " is added");
+
+                count++;
+            }
+            else
+            {
+                Console.WriteLine("Member already exists!");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Not added! The Member Collection array is full");
+        }
+    }
+
+    // Remove a given member out of this member collection
+    // Pre-condition: nil
+    // Post-condition: the given member has been removed from this member collection, if the given meber was in the member collection
+    public void Delete(IMember aMember)
         {
             // To be implemented by students in Phase 1
             if (!IsEmpty())
