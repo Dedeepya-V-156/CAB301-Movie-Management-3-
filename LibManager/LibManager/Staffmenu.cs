@@ -145,7 +145,7 @@ namespace LibManager
                                 thisMovieCollection.Search(thisMovieTitle).AvailableCopies == 0)
                             {
                                 Console.WriteLine();
-                                Console.WriteLine("ERROR: cannot remove the movie, this movie is bottowed by a member");
+                                Console.WriteLine("ERROR: cannot remove the movie, this movie is borrowed by a member");
                             }
                         }
                         else
