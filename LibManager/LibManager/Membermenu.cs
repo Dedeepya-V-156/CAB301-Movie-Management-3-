@@ -171,9 +171,13 @@ namespace LibManager
                         {
                             if (movie != null)
                             {
-                                Console.WriteLine(movie.Title + " " + movie.NoBorrowings);
-
+                                if (movie.NoBorrowings != 0)
+                                {
+                                    Console.WriteLine(movie.Title + " " + movie.NoBorrowings);
+                                }
+                                    
                             }
+
                         }
 
                         break;

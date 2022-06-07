@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MyPC\\Desktop\\CAB301 Assignment3 -new\\LibManager\\LibManager\\LibManager.csproj": {}
+    "C:\\Users\\jhoga\\source\\repos\\Latest\\LibManager\\LibManager\\LibManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MyPC\\Desktop\\CAB301 Assignment3 -new\\LibManager\\LibManager\\LibManager.csproj": {
+    "C:\\Users\\jhoga\\source\\repos\\Latest\\LibManager\\LibManager\\LibManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MyPC\\Desktop\\CAB301 Assignment3 -new\\LibManager\\LibManager\\LibManager.csproj",
+        "projectUniqueName": "C:\\Users\\jhoga\\source\\repos\\Latest\\LibManager\\LibManager\\LibManager.csproj",
         "projectName": "LibManager",
-        "projectPath": "C:\\Users\\MyPC\\Desktop\\CAB301 Assignment3 -new\\LibManager\\LibManager\\LibManager.csproj",
-        "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MyPC\\Desktop\\CAB301 Assignment3 -new\\LibManager\\LibManager\\obj\\",
+        "projectPath": "C:\\Users\\jhoga\\source\\repos\\Latest\\LibManager\\LibManager\\LibManager.csproj",
+        "packagesPath": "C:\\Users\\jhoga\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jhoga\\source\\repos\\Latest\\LibManager\\LibManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jhoga\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
