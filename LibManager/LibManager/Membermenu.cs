@@ -165,20 +165,26 @@ namespace LibManager
                     // Display the top three most frequently borrowed movies
                     case "6":
 
-                        IMovie[] top3 = top3Elements(thisMovieCollection);
- 
-                        foreach (IMovie movie in top3)
+                        if (!thisMovieCollection.IsEmpty())
                         {
-                            if (movie != null)
+                            IMovie[] top3 = top3Elements(thisMovieCollection);
+
+                            foreach (IMovie movie in top3)
                             {
-                                if (movie.NoBorrowings != 0)
+                                if (movie != null)
                                 {
-                                    Console.WriteLine(movie.Title + " " + movie.NoBorrowings);
+                                    if (movie.NoBorrowings != 0)
+                                    {
+                                        Console.WriteLine(movie.Title + " " + movie.NoBorrowings);
+                                    }
+
                                 }
-                                    
+
                             }
 
                         }
+                        else
+                            Console.WriteLine("Error no movies in the library!");
 
                         break;
 
