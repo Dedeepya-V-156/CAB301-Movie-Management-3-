@@ -39,7 +39,6 @@ using System.Text;
         }
 
     
-        //Emma: I added this
         //get all the movies borrowed by this member
         IMovieCollection MoviesBorrowed
         {

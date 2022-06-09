@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 
 
-// Emma: Changed this class to puclic to be able to access movieBorrowed
 class Member : IMember
 {
     // Fields
@@ -12,8 +11,8 @@ class Member : IMember
     private string lastName;
     private string contactNumber;
     private string pin;
-    //Emma: added IMovieCollection to store a collection of registered members who are holding this movie
-    private IMovieCollection moviesBorrowed;  // a collection of registered members who are holding this movie
+    // a collection of registered members who are holding this movie
+    private IMovieCollection moviesBorrowed;  
 
 
     // Properties
@@ -23,7 +22,6 @@ class Member : IMember
     public string Pin { get { return pin; } set { pin = value; } }// Get and set a pin number
     
     
-    //Emma: added this property as well
     //get all the members who are currently holding this movie
     public IMovieCollection MoviesBorrowed
     {
@@ -51,7 +49,6 @@ class Member : IMember
         this.lastName = lastName;
         this.contactNumber = contactNumber;
         this.pin = pin;
-        //Emma: added this
         moviesBorrowed = new MovieCollection();
 
     }

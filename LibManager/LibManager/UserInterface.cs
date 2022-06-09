@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 namespace LibManager
 {
-	//Testing Git
     public class UserInterface
     {
+
+		/// Displays a menu, with the options numbered from 1 to options.Length,
+		/// the gets a validated integer in the range 1..options.Length. 
+		/// Subtracts 1, then returns the result. If the supplied list of options 
+		/// is empty, returns an error value (-1).
 		public static int GetOption(string title, params object[] options)
 		{
 			if (options.Length == 0)
@@ -28,6 +32,7 @@ namespace LibManager
 			return option - 1;
 		}
 
+		/// Gets a validated integer between the designated lower and upper bounds.
 		public static int GetInt(string prompt, int min, int max)
 		{
 			if (min > max)
@@ -52,6 +57,7 @@ namespace LibManager
 			}
 		}
 
+		/// Gets a validated integer.
 		public static int GetInt(string prompt)
 		{
 			while (true)
@@ -71,12 +77,15 @@ namespace LibManager
 			}
 		}
 
+		/// Gets a single line of text from user.
 		public static string GetInput(string prompt)
 		{
 			Console.WriteLine("{0}:", prompt);
 			return Console.ReadLine();
 		}
 
+		/// Gets a password from user. The text is processed one
+		/// character at a time, and the input is concealed.
 		public static string GetPassword(string prompt)
 		{
 			Console.Write("{0}: ", prompt);
@@ -108,12 +117,13 @@ namespace LibManager
 			return password.ToString();
 		}
 
+		/// Displays an error message and asks user to try again.
 		public static void Error(string msg)
 		{
 			Console.WriteLine($"{msg}, please try again");
 			Console.WriteLine();
 		}
-
+		/// Displays the content of an arbitrary object.
 		public static void Message(object msg)
 		{
 			Console.WriteLine(msg);

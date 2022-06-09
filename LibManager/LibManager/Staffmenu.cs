@@ -9,7 +9,7 @@ namespace LibManager
 
         private static void PrintStaffMenu()
         {
-            //Console.Clear();
+            // Display staff menu
             Console.WriteLine("========================= Staff Menu ==========================");
             Console.WriteLine();
             Console.WriteLine("1. Add new DVD's of a new movie to the system");
@@ -35,18 +35,23 @@ namespace LibManager
                 {
                     //Add DVD's of a new/existing movie to the system
                     case "1": 
+                        // Prompt user for a title
                         Console.Write("Title: ");
                         string title = Console.ReadLine();
                         int optionGenre;
-                        // If movie doesn't exists in the library
+
+                        // Check movie doesn't exists in the library
                         if (thisMovieCollection.Search(title) == null)
                         {
+                            // Display an error if an empty string is entered
                             if (title.Length == 0)
                             {
                                 Console.WriteLine("Enter a valid movie name!");
                                 break;
 
                             }
+
+                            //Genre options
                                 optionGenre = UserInterface.GetOption("Please select one of the following:",
                                 "Action", "Comedy", "History", "Drama", "Western");
                                 List<MovieGenre> typesGenre = new List<MovieGenre>()
@@ -60,7 +65,7 @@ namespace LibManager
                             
 
                             var thisGenre = typesGenre[optionGenre];
-
+                            // Classification options
                             int optionClass = UserInterface.GetOption("Please select one of the following:",
                             "G", "PG", "M", "M15Plus");
                             List<MovieClassification> typesClass = new List<MovieClassification>() 
@@ -71,15 +76,17 @@ namespace LibManager
                                 MovieClassification.M15Plus
                             };
                             var thisClass = typesClass[optionClass];
-                            
+                            // Prompt user for duration
                             Console.Write("Duration: ");
                             int thisduration = Convert.ToInt32(Console.ReadLine());
 
-                            // Added by Emma to save total copies as well
+                            // Prompt user for total copies
                             Console.Write("Total Copies: ");
                             int thisTotalCopies = Convert.ToInt32(Console.ReadLine());
 
                             Console.WriteLine();
+
+                            // Add the movie to movie collection
                             IMovie thisMovie = new Movie(title, thisGenre, thisClass, thisduration, thisTotalCopies);
                             thisMovieCollection.Insert(thisMovie);
 
@@ -88,9 +95,10 @@ namespace LibManager
                         }
                         else
                         {
-                            //Added by Emma: more than one copy of DVD can be added at a time
+                            // If movie exists, prompt user for number of copies to add
                             Console.WriteLine("Please enter number of copies to add: ");
                             int copies = Convert.ToInt32(Console.ReadLine());
+                            // Update total copies and available copies
                             thisMovieCollection.Search(title).TotalCopies = thisMovieCollection.Search(title).TotalCopies + copies;
                             thisMovieCollection.Search(title).AvailableCopies = thisMovieCollection.Search(title).AvailableCopies + copies;
 
@@ -101,10 +109,12 @@ namespace LibManager
 
                         break;
 
-                    case "2": //Remove DVD's of a movie from the system
+                    //Remove DVD's of a movie from the system
+                    case "2":
+                        // Prompt user for the title of movie to be removed
                         Console.Write("Title: ");
                         string thisMovieTitle = Console.ReadLine();
-                        // Check if movie exists
+                        // Check if movie exists in the movie collection
                         if (thisMovieCollection.Search(thisMovieTitle) != null)
                         {
                             // Check if movie's total copies is more than one
@@ -140,7 +150,7 @@ namespace LibManager
                                 thisMovieCollection.Delete(thisMovieCollection.Search(thisMovieTitle));
  
                             }
-                            // Check if there is one copy but not available (borrowed by a member)
+                            // Check if there is exactly one copy but not available (borrowed by a member)
                             else if (thisMovieCollection.Search(thisMovieTitle).TotalCopies == 1 &&
                                 thisMovieCollection.Search(thisMovieTitle).AvailableCopies == 0)
                             {
@@ -154,22 +164,25 @@ namespace LibManager
                         }
                         break;
 
-                    case "3": //Register a new member with the system
+                    //Register a new member with the system
+                    case "3": 
+                        // Prompt staff for member's full name and phone number
                         Console.Write("First name: ");
                         string firstName = Console.ReadLine().ToLower();
                         Console.Write("Last name: ");
                         string lastName = Console.ReadLine().ToLower();
                         Console.Write("Phone number: ");
                         string contactNumber = (Console.ReadLine());
+                        // Check phone number is valid and prompt staff to enter a pin
                         if (IMember.IsValidContactNumber(contactNumber))
                         {
                             Console.Write("Pin: ");
                             string pin = Console.ReadLine();
+                            // Check pin is valid, add member to the system
                             if (IMember.IsValidPin(pin))
                             {
                                 Member thisMember = new Member(firstName, lastName, contactNumber, pin);
                                 thisMembersCollection.Add(thisMember);
-                                //Console.WriteLine("Member has been added successfully!");
                                 Console.WriteLine();
 
                             }
@@ -187,7 +200,9 @@ namespace LibManager
                         
                         break;
 
-                    case "4": //Remove a registered memeber from the system
+                    //Remove a registered memeber from the system
+                    case "4": 
+                        // Prompt staff for member's full name
                         Console.Write("First name: ");
                         string firstNameDelete = Console.ReadLine().ToLower();
                         Console.Write("Last name: ");
@@ -197,7 +212,7 @@ namespace LibManager
                         // Check if member exists
                         if (thisMembersCollection.Search(thisMemberDelete))
                         {
-                            // Check if number of borrowed movies == 0.
+                            // Check if number member has no borrowed movies 
                             if (thisMembersCollection.Find(thisMemberDelete).MoviesBorrowed.IsEmpty()) 
                             {
                                 thisMembersCollection.Delete(thisMembersCollection.Find(thisMemberDelete));
@@ -216,13 +231,17 @@ namespace LibManager
                         }
                         break;
 
-                    case "5": //Display a member's contact number given the member's first name
+                    //Display a member's contact number given the member's first name
+                    case "5":
+                        // Prompt staff for member's full name
                         Console.Write("First name: ");
                         string firstNameDisplay = Console.ReadLine().ToLower();
                         Console.Write("Last name: ");
                         string lastNameDisplay = Console.ReadLine().ToLower();
 
                         Member thisMemberDisplay = new Member(firstNameDisplay, lastNameDisplay);
+
+                        // Check member exists and display their contact information
                         if (thisMembersCollection.Search(thisMemberDisplay))
                         {
                             IMember MemberDisplay = thisMembersCollection.Find(thisMemberDisplay);
@@ -235,13 +254,14 @@ namespace LibManager
 
                     //Display all memebers who are currently renting a particular movie
                     case "6":
-                        // Prompt user to enter a movie title
+                        // Prompt staff to enter a movie title
                         Console.WriteLine("Please enter the title of movie: ");
                         string myTitle = Console.ReadLine();
+                        // Check the movie title exists and it's not a null string
                         // Print name of members who borrowed this movie
                         if (myTitle.Length != 0 && thisMovieCollection.Search(myTitle) != null)
                         {
-                            //Added by emma to print to the console if no one is borrowed the movie
+                            // Check if no one is borrowed this movie
                             if (thisMovieCollection.Search(myTitle).Borrowers.IsEmpty())
                             {
                                 Console.WriteLine("No member is currently borrowing this Movie");
@@ -256,12 +276,10 @@ namespace LibManager
                         else
                             Console.WriteLine("Error movie does not exist !");
                         
-                        
-                        // A movie has a borrower
-
                         break; 
 
                     case "0":
+                        // Return to the main menu
                         status = false;
                         Mainmenu.Init(thisMembersCollection,thisMovieCollection);
                         break;

@@ -4,15 +4,20 @@ namespace LibManager
 {
     public class Membermenu
     {
+        // Determine top three movies borrowed in the library system
+        // Pre-condition: nil
+        // Post-condition: an array containing top 3 borrowed movies are returned
         private static IMovie[] top3Elements(IMovieCollection movies)
         {
+            
             int first = movies.ToArray()[0].NoBorrowings, second = 0, third = 0;
-
+            
             Console.WriteLine("Top three most borrowed movies are: ");
             IMovie[] top3 = new IMovie[3];
+            // Assign the first movie in ToArray as first element of top3 array
             top3[0] = movies.Search(movies.ToArray()[0].Title);
 
-            //foreach (IMovie movie in thisMovieCollection.ToArray())
+            // Go through all the movies stored in ToArray (starting from second element) to find top 3 most borrowed movies
             for (int i = 1; i < movies.ToArray().Length; i++)
             {
                 if (movies.ToArray()[i].NoBorrowings > first)
@@ -48,6 +53,7 @@ namespace LibManager
 
             while (status)
             {
+                // Display Member Menu 
                 Console.WriteLine("========================= Member Menu ==========================");
                 Console.WriteLine();
                 Console.WriteLine("1. Browse all the movies");
@@ -66,12 +72,12 @@ namespace LibManager
                     case "1":
 
                         IMovie[] allMovies = thisMovieCollection.ToArray();
-                        // If there is any movie in the library print the title and available copies
+
+                        // Check there is any movie in the library, print the title and available copies
                         if (allMovies.Length != 0)
                         {
                             foreach (IMovie movie in allMovies)
                             {
-                                    //////////////////TEST NUMBER OF AVAILABLE COPIES
                                     Console.Write(movie.Title + " available copies: ");
                                     Console.WriteLine(movie.AvailableCopies);
                             }
@@ -85,13 +91,14 @@ namespace LibManager
 
                     // Displaying the information of a movie when provided with title
                     case "2":
+                        // Prompt the user for a tile and read it
                         Console.Write("Title of the movie : ");
                         string movietitle = Console.ReadLine();
+
+                        // Check if movie exists, show all movie information
                         if (thisMovieCollection.Search(movietitle) != null)
                         {
-                            //Modified by Emma so that it shows movie info
                             Console.WriteLine(thisMovieCollection.Search(movietitle).ToString());
-                            //Console.WriteLine(thisMovieCollection.Search(movietitle).Borrowers.ToString());
 
                         }
                         else
@@ -104,11 +111,13 @@ namespace LibManager
                         Console.Write("Title of the movie : ");
                         string movietitle2 = Console.ReadLine();
                         Console.WriteLine();
+
+                        //Check if movie exists, and member borrowed less than 5 movies
                         if (thisMovieCollection.Search(movietitle2) != null)
                         {
-                            if (thisMember.MoviesBorrowed.Number < 5) // Emma: prevent members to borrow more than 5 movies
+                            if (thisMember.MoviesBorrowed.Number < 5) 
                             {
-                                // Add this member to the borrowers //////////////////////////////////////////////
+                                // Add this member to the borrowers
                                 thisMovieCollection.Search(movietitle2).AddBorrower(thisMember);
                                 // Add this movie to this member's borrowers list
                                 thisMember.MoviesBorrowed.Insert(thisMovieCollection.Search(movietitle2));
@@ -131,16 +140,14 @@ namespace LibManager
                         Console.Write("Title of the movie : ");
                         string movietitle3 = Console.ReadLine();
 
-                        if(thisMovieCollection.Search(movietitle3) != null)
+                        //Check if movie exists
+                        if (thisMovieCollection.Search(movietitle3) != null)
                         {
-                            // Remove the member from the borrowers list of that particular movie /////////////////////////
+                            // Remove the member from the borrowers list of that particular movie 
                             thisMovieCollection.Search(movietitle3).RemoveBorrower(thisMember);
                             // Removed this movie from this member's borrowed list
                             thisMember.MoviesBorrowed.Delete(thisMovieCollection.Search(movietitle3));
 
-                            // Print a message to console
-                            //Console.WriteLine();
-                            //Console.WriteLine(movietitle3 + " is returned successfully!");
                         }
                         else
                         {
@@ -151,10 +158,9 @@ namespace LibManager
 
                     // List current movies that are currently borrowed by the registered member
                     case "5":
-                        //////////////////////////////////////////////////////////////////
                         Console.WriteLine("List of movies borrowed by " + thisMember.ToString());
                         Console.WriteLine();
-                        // Print all the movies to the console
+                        // Display all the movies borrowed by this member
                         foreach(IMovie movie in thisMember.MoviesBorrowed.ToArray())
                         {
                                 Console.WriteLine(movie.ToString());
@@ -165,6 +171,7 @@ namespace LibManager
                     // Display the top three most frequently borrowed movies
                     case "6":
 
+                        // Check if movie collection is not empty, and is borrowed, display the top 3 borrowed movies
                         if (!thisMovieCollection.IsEmpty())
                         {
                             IMovie[] top3 = top3Elements(thisMovieCollection);
@@ -189,6 +196,7 @@ namespace LibManager
                         break;
 
                     case "0":
+                        // Return to main menu
                         status = false;
                         Mainmenu.Init(thisMembersCollection,thisMovieCollection);
                         break;

@@ -222,8 +222,10 @@ using System.Linq;
 
             return false;
         }
-        //Emma: modified this method
-        public IMember Find(IMember member)
+    // Search a given member in this member collection 
+    // Pre-condition: nil
+    // Post-condition: return the member if this memeber is in the member collection; return null otherwise; member collection remains unchanged 
+    public IMember Find(IMember member)
         {
             // To be implemented by students in Phase 1
             if (!IsEmpty())

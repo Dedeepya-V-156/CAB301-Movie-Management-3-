@@ -7,29 +7,18 @@ namespace LibManager
 {
     public class Mainmenu
     {
-        /*
-        private static bool StaffLogin()
-        {
-            Console.Write("Username: ");
-            string username = Console.ReadLine();
-            string password = UserInterface.GetPassword("Password");
-            if (username == "staff" && password == "today123")
-            {
-                return true;
-            }
-            return false;
-        }
-        */
+  
         public static void Init(IMemberCollection thisMembersCollection, IMovieCollection thisMovieCollection)
         {
 
-            //welcome messade
+            //welcome message
             Console.Clear();
             Console.WriteLine("============================================================");
             Console.WriteLine("Welcome to Community Library Movie DVD Management System");
             Console.WriteLine("============================================================");
             Console.WriteLine();
             start:
+            //Main menu message
             Console.WriteLine("1. Staff Login ");
             Console.WriteLine("2. Member Login ");
             Console.WriteLine("0. Exit ");
@@ -45,14 +34,16 @@ namespace LibManager
                 {
                     case "1":
                         Console.WriteLine("Staff Entry");
-
+                        // Ask for username
                         Console.Write("Username: ");
                         string username = Console.ReadLine();
                         string password = UserInterface.GetPassword("Password");
+                        // If username and password correct, redirect the staff to staff menu
                         if (username == "staff" && password == "today123")
                         {
                             Staffmenu.Init(thisMembersCollection, thisMovieCollection);
                         }
+                        // otherwise display an error message
                         else
                         {
                             Console.WriteLine();
@@ -62,20 +53,23 @@ namespace LibManager
                         }
                         break;
 
-                    case "2": // Jack, updated the member entry so that a member reference is passed to Init instead of a new Member object.
+                    case "2": 
                         Console.WriteLine("Member Entry");
+                        // Ask registered member for full name & password
                         Console.Write("First Name: ");
                         string FirstName = Console.ReadLine().ToLower();
                         Console.Write("Last Name: ");
                         string LastName = Console.ReadLine().ToLower();
                         string password2 = UserInterface.GetPassword("Password");
                         IMember loggedInMember = new Member(FirstName, LastName);
+                        // Check member exists and password is correct, send the member to member menu
                         if (thisMembersCollection.Find(loggedInMember) != null)
                         {
                             if (thisMembersCollection.Find(loggedInMember).Pin == password2)
                             {
                                 Membermenu.Init(thisMembersCollection, thisMovieCollection, thisMembersCollection.Find(loggedInMember));
                             }
+                            // Display an error if password is not correct
                             else
                             {
                                 Console.WriteLine();
@@ -84,6 +78,7 @@ namespace LibManager
                                 goto start;
                             }
                         }
+                        // Display an error if member doesn't exists in member collection
                         else
                         {
                             Console.WriteLine();
@@ -94,8 +89,8 @@ namespace LibManager
                         break;
 
                     case "0":
+                        // Exit the system
                         System.Environment.Exit(0);
-                        //status = false;
                         break;
                     default:
                         Console.WriteLine("Error make a valid choice from 0 - 2 ");
